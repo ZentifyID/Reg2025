@@ -1,0 +1,40 @@
+{
+  "items": [
+    { "key": "tooltip_play", "value": "Press to play" },
+    { "key": "tooltip_editor", "value": "Press to open level editor" },
+    { "key": "tooltip_settings", "value": "Press to open game settings" },
+    { "key": "tooltip_exit", "value": "Press to exit the game" },
+    
+    { "key": "menu_play", "value": "PLAY" },
+    { "key": "menu_editor", "value": "LEVEL EDITOR" },
+    { "key": "menu_settings", "value": "Settings" },
+    { "key": "menu_exit", "value": "Exit" },
+
+    { "key": "settings_title", "value": "Settings" },
+    { "key": "settings_resolution", "value": "Screen resolution" },
+    { "key": "settings_fullscreen", "value": "Windows mode" },
+    { "key": "settings_audio", "value": "Sound & music" },
+    { "key": "settings_language", "value": "Language" },
+    { "key": "settings_reset", "value": "Restore Purchase" },
+
+    { "key": "confirm_save_title", "value": "Save settings?" },
+    { "key": "yes", "value": "Yes" },
+    { "key": "no", "value": "No" },
+
+    { "key": "store_title", "value": "STORE" },
+    { "key": "store_1_pack", "value": "USD 0,00" },
+    { "key": "store_2_pack", "value": "USD 0,00" },
+    { "key": "store_3_pack", "value": "USD 0,00" },
+    { "key": "payment_progress", "value": "Payment in progress..." },
+    { "key": "ad", "value": "Movie" },
+
+    { "key": "bg_title", "value": "Environment" },
+    { "key": "bg_get", "value": "Get" },
+
+    { "key": "game_start", "value": "START" },
+    { "key": "game_level", "value": "Level" },
+
+    { "key": "lang_ru", "value": "Russian" },
+    { "key": "lang_en", "value": "English" }
+  ]
+}

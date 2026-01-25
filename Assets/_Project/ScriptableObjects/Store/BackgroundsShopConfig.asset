@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a300947822fe44caef9ad5d52ee199, type: 3}
+  m_Name: BackgroundsShopConfig
+  m_EditorClassIdentifier: Assembly-CSharp::BackgroundsShopConfig
+  items:
+  - id: bg_1
+    priceCoins: 0
+    preview: {fileID: 21300000, guid: c437cead450f252468b99258f3020b62, type: 3}
+  - id: bg_2
+    priceCoins: 450
+    preview: {fileID: 21300000, guid: 7ba8c14e870ee464e8e309abac873b9c, type: 3}
+  - id: bg_3
+    priceCoins: 1000
+    preview: {fileID: 21300000, guid: d0ad766ba965d7a45a6148b04de9b6fc, type: 3}
+  videoRewardCoins: 150
+  videoCooldownSeconds: 30
+  videoDurationSeconds: 5

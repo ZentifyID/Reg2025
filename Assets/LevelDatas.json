@@ -1,0 +1,1457 @@
+{
+  "ArrayOfLevelData": {
+    "LevelData": [
+      {
+        "Objects": {
+          "ObjectData": [
+            {
+              "Position": {
+                "X": 1.03821373,
+                "Y": 9.616987,
+                "Z": 4
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 1
+            },
+            {
+              "Position": {
+                "X": 9.088026,
+                "Y": 5.950653,
+                "Z": 4
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 7
+            },
+            {
+              "Position": {
+                "X": 24.3364353,
+                "Y": 4.71913433,
+                "Z": 4
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 11
+            },
+            {
+              "Position": {
+                "X": 38.39055,
+                "Y": -0.07708359,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 14
+            },
+            {
+              "Position": {
+                "X": 27.1589375,
+                "Y": -2.055317,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 10
+            },
+            {
+              "Position": {
+                "X": 19.779211,
+                "Y": -1.31203842,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 15.2112141,
+                "Y": -0.0270385742,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 345.000244
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 10.2219028,
+                "Y": -0.0248355865,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 9.150442,
+                "Y": -0.0248355865,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 7.97510338,
+                "Y": -0.0248355865,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 5.764345,
+                "Y": -0.0248355865,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            }
+          ]
+        },
+        "CarData": {
+          "CarModelIndex": 1,
+          "HasSpikedWheels": false,
+          "HasRocket": false,
+          "HasPropeller": false,
+          "HasWings": false
+        }
+      },
+      {
+        "Objects": {
+          "ObjectData": [
+            {
+              "Position": {
+                "X": 46.81051,
+                "Y": 17.892952,
+                "Z": 4
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 9
+            },
+            {
+              "Position": {
+                "X": 55.2018433,
+                "Y": 10.9608994,
+                "Z": 4.33179
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1.6276,
+                "Y": 1.6276,
+                "Z": 1.6276
+              },
+              "ObjectType": 9
+            },
+            {
+              "Position": {
+                "X": 46.21557,
+                "Y": 10.6633978,
+                "Z": 4
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 1
+            },
+            {
+              "Position": {
+                "X": 65.73619,
+                "Y": 4.057761,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 14
+            },
+            {
+              "Position": {
+                "X": 24.6195469,
+                "Y": 7.85955429,
+                "Z": 4
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 7
+            },
+            {
+              "Position": {
+                "X": 5.866495,
+                "Y": 5.819434,
+                "Z": 4
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 0.6,
+                "Y": 0.6,
+                "Z": 0.6
+              },
+              "ObjectType": 5
+            },
+            {
+              "Position": {
+                "X": 45.1977234,
+                "Y": 3.12780952,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 4
+            },
+            {
+              "Position": {
+                "X": 37.1492081,
+                "Y": 4.407962,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 32.1392136,
+                "Y": -0.0920372,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 2
+            },
+            {
+              "Position": {
+                "X": 32.279213,
+                "Y": -0.0920372,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 180.000336,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 2
+            },
+            {
+              "Position": {
+                "X": 22.293211,
+                "Y": 4.415962,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 17.295023,
+                "Y": -0.050037384,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 2
+            },
+            {
+              "Position": {
+                "X": 4.43922234,
+                "Y": -0.0422897339,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 12.4096775,
+                "Y": -0.0422897339,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 10.1743679,
+                "Y": -0.0422897339,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 6.7571125,
+                "Y": -0.0422897339,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            }
+          ]
+        },
+        "CarData": {
+          "CarModelIndex": 0,
+          "HasSpikedWheels": false,
+          "HasRocket": false,
+          "HasPropeller": true,
+          "HasWings": false
+        }
+      },
+      {
+        "Objects": {
+          "ObjectData": [
+            {
+              "Position": {
+                "X": -10.7907867,
+                "Y": -0.00203895569,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": -13.8953924,
+                "Y": 3.104128,
+                "Z": 4
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 9
+            },
+            {
+              "Position": {
+                "X": 3.91975975,
+                "Y": 3.5039835,
+                "Z": 4
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 1
+            },
+            {
+              "Position": {
+                "X": -6.3222065,
+                "Y": -3.45622635,
+                "Z": 4
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 11
+            },
+            {
+              "Position": {
+                "X": -0.111608505,
+                "Y": -4.152069,
+                "Z": 4
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 11
+            },
+            {
+              "Position": {
+                "X": 1.4052124,
+                "Y": -6.20420837,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 0.504943848,
+                "Y": -6.204212,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": -1.80189323,
+                "Y": -6.204212,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": -4.05090141,
+                "Y": -6.204212,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": -7.44205475,
+                "Y": -6.204212,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": -10.9438438,
+                "Y": -6.204212,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": -10.8448429,
+                "Y": -6.212038,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 180,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 3
+            },
+            {
+              "Position": {
+                "X": 6.405157,
+                "Y": -6.212038,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 3
+            }
+          ]
+        },
+        "CarData": {
+          "CarModelIndex": 2,
+          "HasSpikedWheels": true,
+          "HasRocket": false,
+          "HasPropeller": false,
+          "HasWings": false
+        }
+      },
+      {
+        "Objects": {
+          "ObjectData": [
+            {
+              "Position": {
+                "X": -0.0327587128,
+                "Y": 4.377448,
+                "Z": 4
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 5
+            },
+            {
+              "Position": {
+                "X": 15.8362293,
+                "Y": 0.459348679,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 14
+            },
+            {
+              "Position": {
+                "X": 30.4458332,
+                "Y": 7.85367,
+                "Z": 4
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 1
+            },
+            {
+              "Position": {
+                "X": 46.9488449,
+                "Y": 7.69516,
+                "Z": 4
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 5
+            },
+            {
+              "Position": {
+                "X": 46.5806046,
+                "Y": 3.04764652,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 13
+            },
+            {
+              "Position": {
+                "X": 36.5806046,
+                "Y": 4.10866547,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 8
+            },
+            {
+              "Position": {
+                "X": 38.25782,
+                "Y": 4.20249939,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 36.00525,
+                "Y": 4.20250034,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 33.72982,
+                "Y": 4.20250034,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 30.2603168,
+                "Y": 4.20249939,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 30.2603168,
+                "Y": 4.19031239,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 30.2603168,
+                "Y": 4.165927,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 30.24811,
+                "Y": 4.15372849,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 25.33935,
+                "Y": 4.216213,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 20.3399143,
+                "Y": -0.274097443,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 2
+            },
+            {
+              "Position": {
+                "X": 15.6530628,
+                "Y": -0.26190567,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 13.1362362,
+                "Y": -0.26190567,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 10.3619785,
+                "Y": -0.26190567,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 7.497942,
+                "Y": -0.26190567,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 6.34726524,
+                "Y": -0.26190567,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            }
+          ]
+        },
+        "CarData": {
+          "CarModelIndex": 0,
+          "HasSpikedWheels": false,
+          "HasRocket": true,
+          "HasPropeller": true,
+          "HasWings": false
+        }
+      },
+      {
+        "Objects": {
+          "ObjectData": [
+            {
+              "Position": {
+                "X": 51.4251938,
+                "Y": 10.6805468,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 10
+            },
+            {
+              "Position": {
+                "X": 45.2964935,
+                "Y": 11.8023167,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 40.6126938,
+                "Y": 11.8023167,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 36.1801376,
+                "Y": 11.8023167,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 25.7317448,
+                "Y": 11.8023167,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 23.4581776,
+                "Y": 11.8023167,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 19.9739475,
+                "Y": 11.8023167,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 17.6916981,
+                "Y": 11.8023167,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 17.6916981,
+                "Y": 11.7657528,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 17.6916981,
+                "Y": 11.7413588,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 17.2492123,
+                "Y": 5.62596226,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 17.7492123,
+                "Y": 11.620162,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 180
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 3
+            },
+            {
+              "Position": {
+                "X": 18.7715778,
+                "Y": -0.298130035,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 3
+            },
+            {
+              "Position": {
+                "X": 13.8426228,
+                "Y": -0.2702465,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 11.6345806,
+                "Y": -0.2702465,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 8.015913,
+                "Y": -0.2702465,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            },
+            {
+              "Position": {
+                "X": 5.855318,
+                "Y": -0.2702465,
+                "Z": 0
+              },
+              "Rotation": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Scale": {
+                "X": 1,
+                "Y": 1,
+                "Z": 1
+              },
+              "ObjectType": 12
+            }
+          ]
+        },
+        "CarData": {
+          "CarModelIndex": 0,
+          "HasSpikedWheels": true,
+          "HasRocket": false,
+          "HasPropeller": true,
+          "HasWings": true
+        }
+      }
+    ]
+  }
+}

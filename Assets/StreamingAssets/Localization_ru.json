@@ -1,0 +1,40 @@
+{
+  "items": [
+    { "key": "tooltip_play", "value": "Нажмите чтобы играть" },
+    { "key": "tooltip_editor", "value": "Нажмите чтобы открыть редакор уровней" },
+    { "key": "tooltip_settings", "value": "Нажмите чтобы открыть настройки игры" },
+    { "key": "tooltip_exit", "value": "Нажмите чтобы выйти из игры" },
+    
+    { "key": "menu_play", "value": "ИГРАТЬ" },
+    { "key": "menu_editor", "value": "РЕДАКТОР УРОВНЕЙ" },
+    { "key": "menu_settings", "value": "Настройки" },
+    { "key": "menu_exit", "value": "Выход" },
+
+    { "key": "settings_title", "value": "Настройки" },
+    { "key": "settings_resolution", "value": "Размер экрана" },
+    { "key": "settings_fullscreen", "value": "Режим окна" },
+    { "key": "settings_audio", "value": "Звуки и музыка" },
+    { "key": "settings_language", "value": "Язык" },
+    { "key": "settings_reset", "value": "Сброс по умолчанию" },
+
+    { "key": "confirm_save_title", "value": "Сохранить настройки?" },
+    { "key": "yes", "value": "Да" },
+    { "key": "no", "value": "Нет" },    
+
+    { "key": "store_title", "value": "МАГАЗИН" },
+    { "key": "store_1_pack", "value": "RUB 0,00" },
+    { "key": "store_2_pack", "value": "RUB 0,00" },
+    { "key": "store_3_pack", "value": "RUB 0,00" },
+    { "key": "payment_progress", "value": "Платеж в обработке..." },
+    { "key": "ad", "value": "Реклама" },
+
+    { "key": "bg_title", "value": "Окружение" },
+    { "key": "bg_get", "value": "Получить" },
+
+    { "key": "game_start", "value": "СТАРТ" },
+    { "key": "game_level", "value": "Уровень" },
+
+    { "key": "lang_ru", "value": "Русский" },
+    { "key": "lang_en", "value": "Английский" }
+  ]
+}
