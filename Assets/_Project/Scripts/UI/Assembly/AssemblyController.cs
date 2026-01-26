@@ -14,7 +14,13 @@ public class AssemblyController : MonoBehaviour
     [Header("UI")]
     [SerializeField] private GameObject startButton; // пока просто объект/кнопка
 
+    [Header("Wings Check")]
+    [SerializeField] private VehicleMotor2D vehicle;
+    [SerializeField] private WingsButtonController wingsButton;
+
     private ItemType? selectedItem;
+
+    public GamePhase Phase { get; private set; } = GamePhase.Assembly;
 
     private void Awake()
     {
@@ -47,6 +53,11 @@ public class AssemblyController : MonoBehaviour
         if (prefab == null) return;
 
         slot.Place(prefab);
+        if (selectedItem == ItemType.Wings)
+        {
+            vehicle.SetHasWings(true);
+        }
+
         UpdateHighlights();
         CheckAllPlaced();
     }
@@ -83,5 +94,11 @@ public class AssemblyController : MonoBehaviour
         // позже сделаем проверку по требованиям уровня (2 пары колёс + крылья).
         bool allOccupied = slots.All(s => s.IsOccupied);
         if (startButton != null) startButton.SetActive(allOccupied);
+    }
+
+    public void OnStartRun()
+    {
+        Phase = GamePhase.Run;
+        ClearHighlights();
     }
 }
