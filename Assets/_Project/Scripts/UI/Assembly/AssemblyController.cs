@@ -100,5 +100,11 @@ public class AssemblyController : MonoBehaviour
     {
         Phase = GamePhase.Run;
         ClearHighlights();
+
+        foreach (var s in slots)
+        {
+            var col = s.GetComponent<Collider>(); // 3D коллайдер
+            if (col != null) col.enabled = false;
+        }
     }
 }
