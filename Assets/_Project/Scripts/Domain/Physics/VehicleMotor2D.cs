@@ -55,4 +55,10 @@ public class VehicleMotor2D : MonoBehaviour
         Debug.Log("[VehicleMotor2D] Wings impulse!");
         return true;
     }
+
+    public void StopMoving()
+    {
+        autoMove = false;
+        rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+    }
 }

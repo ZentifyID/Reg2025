@@ -28,11 +28,14 @@
     { "key": "payment_progress", "value": "Платеж в обработке..." },
     { "key": "ad", "value": "Реклама" },
 
-    { "key": "bg_title", "value": "Окружение" },
-    { "key": "bg_get", "value": "Получить" },
+    { "key": "bg_title", "value": "ОКРУЖЕНИЕ" },
+    { "key": "bg_get", "value": "ПОЛУЧИТЬ" },
 
     { "key": "game_start", "value": "СТАРТ" },
     { "key": "game_level", "value": "Уровень" },
+    { "key": "game_completed", "value": "УРОВЕНЬ\nПРОЙДЕН" },
+    { "key": "game_x3Ad", "value": "ПОЛУЧИТЬ ×3" },    
+    { "key": "game_nothx", "value": "НЕТ, СПАСИБО" },
 
     { "key": "lang_ru", "value": "Русский" },
     { "key": "lang_en", "value": "Английский" }

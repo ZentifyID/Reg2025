@@ -28,11 +28,14 @@
     { "key": "payment_progress", "value": "Payment in progress..." },
     { "key": "ad", "value": "Movie" },
 
-    { "key": "bg_title", "value": "Environment" },
-    { "key": "bg_get", "value": "Get" },
+    { "key": "bg_title", "value": "ENVIRONMENT" },
+    { "key": "bg_get", "value": "GET" },
 
     { "key": "game_start", "value": "START" },
     { "key": "game_level", "value": "Level" },
+    { "key": "game_completed", "value": "LEVEL\nCOMPLETED" },
+    { "key": "game_x3Ad", "value": "GET ×3" },
+    { "key": "game_nothx", "value": "NO, THANKS" },
 
     { "key": "lang_ru", "value": "Russian" },
     { "key": "lang_en", "value": "English" }
