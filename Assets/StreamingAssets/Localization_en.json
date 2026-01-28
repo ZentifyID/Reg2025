@@ -35,7 +35,9 @@
     { "key": "game_level", "value": "Level" },
     { "key": "game_completed", "value": "LEVEL\nCOMPLETED" },
     { "key": "game_x3Ad", "value": "GET ×3" },
-    { "key": "game_nothx", "value": "NO, THANKS" },
+    { "key": "game_refusal_ad", "value": "NO, THANKS" },
+    { "key": "game_fail", "value": "LEVEL FAILED" },   
+    { "key": "game_skip", "value": "SKIP" },   
 
     { "key": "lang_ru", "value": "Russian" },
     { "key": "lang_en", "value": "English" }

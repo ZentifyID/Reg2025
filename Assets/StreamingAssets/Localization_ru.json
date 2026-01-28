@@ -35,7 +35,9 @@
     { "key": "game_level", "value": "Уровень" },
     { "key": "game_completed", "value": "УРОВЕНЬ\nПРОЙДЕН" },
     { "key": "game_x3Ad", "value": "ПОЛУЧИТЬ ×3" },    
-    { "key": "game_nothx", "value": "НЕТ, СПАСИБО" },
+    { "key": "game_refusal_ad", "value": "НЕТ, СПАСИБО" },
+    { "key": "game_fail", "value": "УРОВЕНЬ НЕ ПРОЙДЕН" },   
+    { "key": "game_skip", "value": "ПРОПУСТИТЬ" },   
 
     { "key": "lang_ru", "value": "Русский" },
     { "key": "lang_en", "value": "Английский" }

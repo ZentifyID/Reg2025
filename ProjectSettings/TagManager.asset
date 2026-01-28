@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Visuals
   - Part
+  - Vehicle
   layers:
   - Default
   - TransparentFX
@@ -13,9 +14,9 @@ TagManager:
   - Slots
   - Water
   - UI
-  - GroundPlatforms
+  - Platforms
   - PreviewAssembly
-  - 
+  - Ground
   - 
   - 
   - 
