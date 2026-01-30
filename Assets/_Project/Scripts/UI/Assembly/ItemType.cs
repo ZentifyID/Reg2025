@@ -1,8 +1,10 @@
-using UnityEngine;
-
 public enum ItemType
 {
     WheelsA,
     WheelsB,
-    Wings
+
+    Wings,
+    Rocket,
+    Propeller,
+    Spikes
 }

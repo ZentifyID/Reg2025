@@ -59,6 +59,5 @@ public class VehicleMotor2D : MonoBehaviour
     public void StopMoving()
     {
         autoMove = false;
-        rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
     }
 }

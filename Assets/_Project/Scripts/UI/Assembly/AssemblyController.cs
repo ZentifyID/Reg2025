@@ -8,15 +8,20 @@ public class AssemblyController : MonoBehaviour
     [SerializeField] private List<AttachmentSlot> slots;
 
     [Header("Prefabs to place")]
-    [SerializeField] private GameObject wheelsPrefab; // внешний вид колёс
-    [SerializeField] private GameObject wingsPrefab;  // внешний вид крыльев
+    [SerializeField] private GameObject wheelsPrefab;
+    [SerializeField] private GameObject wingsPrefab;
 
     [Header("UI")]
-    [SerializeField] private GameObject startButton; // пока просто объект/кнопка
+    [SerializeField] private GameObject startButton;
 
     [Header("Wings Check")]
     [SerializeField] private VehicleMotor2D vehicle;
     [SerializeField] private WingsButtonController wingsButton;
+
+    [Header("Item Buttons")]
+    [SerializeField] private GameObject wheelsAButton;
+    [SerializeField] private GameObject wheelsBButton;
+    [SerializeField] private GameObject wingsButtonUI;
 
     private ItemType? selectedItem;
 
@@ -40,7 +45,6 @@ public class AssemblyController : MonoBehaviour
         ClearHighlights();
     }
 
-    // Вызываем из клика по слоту (см. SlotClick ниже)
     public void TryPlaceOnSlot(AttachmentSlot slot)
     {
         Debug.Log($"TryPlaceOnSlot: selected={selectedItem}, slotAccepts={slot.Accepts}, occupied={slot.IsOccupied}");
@@ -90,8 +94,6 @@ public class AssemblyController : MonoBehaviour
 
     private void CheckAllPlaced()
     {
-        // MVP: считаем "все слоты заняты"
-        // позже сделаем проверку по требованиям уровня (2 пары колёс + крылья).
         bool allOccupied = slots.All(s => s.IsOccupied);
         if (startButton != null) startButton.SetActive(allOccupied);
     }
@@ -103,8 +105,55 @@ public class AssemblyController : MonoBehaviour
 
         foreach (var s in slots)
         {
-            var col = s.GetComponent<Collider>(); // 3D коллайдер
-            if (col != null) col.enabled = false;
+            if (s == null) continue;
+
+            foreach (var col2d in s.GetComponentsInChildren<Collider2D>(true))
+                col2d.enabled = false;
+
+            var col3d = s.GetComponent<Collider>();
+            if (col3d != null) col3d.enabled = false;
         }
+    }
+
+    public void SetupForLevel(LevelData level)
+    {
+        Phase = GamePhase.Assembly;
+
+        selectedItem = null;
+
+        if (startButton != null)
+            startButton.SetActive(false);
+
+        if (vehicle != null)
+            vehicle.SetHasWings(false);
+
+        if (wingsButton != null)
+            wingsButton.Refresh();
+
+        foreach (var s in slots)
+        {
+            if (s == null) continue;
+
+            foreach (var col2d in s.GetComponentsInChildren<Collider2D>(true))
+                col2d.enabled = true;
+
+            var col3d = s.GetComponent<Collider>();
+            if (col3d != null) col3d.enabled = true;
+
+            s.Clear();
+        }
+
+        void SetButton(GameObject go, bool active)
+        {
+            if (go != null) go.SetActive(active);
+        }
+
+        bool Has(ItemType t) => level != null && level.requiredItems != null && level.requiredItems.Contains(t);
+
+        SetButton(wheelsAButton, Has(ItemType.WheelsA));
+        SetButton(wheelsBButton, Has(ItemType.WheelsB));
+        SetButton(wingsButtonUI, Has(ItemType.Wings));
+
+        ClearHighlights();
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 [Serializable]
 public class UserData
 {
+    public int lastUnlockedLevel = 0;
     public int coins;
 
     // UNIX time seconds когда можно снова получить награду

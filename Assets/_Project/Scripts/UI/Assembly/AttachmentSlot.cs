@@ -26,4 +26,13 @@ public class AttachmentSlot : MonoBehaviour
         IsOccupied = true;
         SetHighlighted(false);
     }
+
+    public void Clear()
+    {
+        for (int i = transform.childCount - 1; i >= 0; i--)
+            Destroy(transform.GetChild(i).gameObject);
+
+        IsOccupied = false;
+        SetHighlighted(false);
+    }
 }

@@ -13,7 +13,6 @@ public class CoinWallet : MonoBehaviour
 
     private void Awake()
     {
-        // singleton
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -32,7 +31,6 @@ public class CoinWallet : MonoBehaviour
 
     public void Add(int amount)
     {
-        // страховка на случай, если кто-то всё же вызвал Add слишком рано
         if (storage == null) storage = new UserDataStorage();
         Data ??= new UserData { coins = 0 };
 
