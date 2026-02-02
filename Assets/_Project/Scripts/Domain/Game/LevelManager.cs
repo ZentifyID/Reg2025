@@ -8,13 +8,13 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private LevelDatas levelDatas;
 
     [Header("Scene refs")]
-    [SerializeField] private Transform levelDesignRoot;      // LevelDesignRoot
-    [SerializeField] private Transform vehicleSpawnPoint;    // где спавнится транспорт
+    [SerializeField] private Transform levelDesignRoot;
+    [SerializeField] private Transform vehicleSpawnPoint;
     [SerializeField] private TMP_Text levelText;
 
     [Header("Other systems")]
     [SerializeField] private AssemblyController assemblyController;
-    [SerializeField] private LevelEndController endController; // твой Win/Lose контроллер
+    [SerializeField] private LevelEndController endController;
     [SerializeField] private CoinWallet wallet;
 
     private UserDataStorage storage;
@@ -29,10 +29,8 @@ public class LevelManager : MonoBehaviour
         storage = new UserDataStorage();
         data = storage.LoadOrCreate() ?? new UserData { coins = 0 };
 
-        // если wallet живёт через DontDestroyOnLoad — можно найти так:
         if (wallet == null) wallet = CoinWallet.Instance != null ? CoinWallet.Instance : FindFirstObjectByType<CoinWallet>();
 
-        // стартуем с последнего открытого
         CurrentLevelIndex = Mathf.Clamp(data.lastUnlockedLevel, 0, Mathf.Max(0, levelDatas.Count - 1));
     }
 
@@ -52,7 +50,7 @@ public class LevelManager : MonoBehaviour
 
         SpawnVehicle(lvl.vehiclePrefab);
 
-        assemblyController.SetupForLevel(level);
+        // assemblyController.SetupForLevel(level);
 
         if (assemblyController != null)
             assemblyController.SetupForLevel(lvl);
@@ -72,14 +70,29 @@ public class LevelManager : MonoBehaviour
             levelDesignRoot.GetChild(i).gameObject.SetActive(i == childIndex);
     }
 
-    private void SpawnVehicle(GameObject prefab)
+    private void SpawnVehicle(GameObject prefab, GameObject vehiclePrefab)
     {
         if (prefab == null || vehicleSpawnPoint == null) return;
 
         if (currentVehicle != null)
             Destroy(currentVehicle);
 
+        // 1) спавним RIG
         currentVehicle = Instantiate(prefab, vehicleSpawnPoint.position, vehicleSpawnPoint.rotation);
+
+        // 2) подставляем визуал
+        var visualRoot = currentVehicle.GetComponentInChildren<VehicleVisualRoot>();
+        if (visualRoot != null)
+            visualRoot.SetVisual(vehiclePrefab);
+
+        // 3) прокидываем ссылки в другие системы
+        var motor = currentVehicle.GetComponent<VehicleMotor2D>();
+        if (motor != null)
+        {
+            assemblyController.SetVehicle(motor);
+            wingsButton.SetVehicle(motor);
+            endController.SetVehicle(motor);
+        }
     }
 
     public void OnWin()

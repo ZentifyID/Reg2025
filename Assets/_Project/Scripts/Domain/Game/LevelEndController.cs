@@ -12,7 +12,7 @@ public class LevelEndController : MonoBehaviour
 
     [Header("Vehicle")]
     [SerializeField] private Rigidbody2D vehicleRb;
-    [SerializeField] private VehicleMotor2D motor;
+    [SerializeField] private VehicleMotor2D vehicle;
 
     [Header("Level Manager")]
     [SerializeField] private LevelManager levelManager;
@@ -25,7 +25,7 @@ public class LevelEndController : MonoBehaviour
         levelManager.OnWin();
 
         // стоп автодвижения, но физику не выключаем
-        if (motor != null) motor.StopMoving();
+        if (vehicle != null) vehicle.StopMoving();
 
         if (gameplayUI != null) gameplayUI.SetActive(false);
         if (loseUI != null) loseUI.SetActive(false);
@@ -39,7 +39,7 @@ public class LevelEndController : MonoBehaviour
 
         levelManager.OnLose();
 
-        if (motor != null) motor.StopMoving();
+        if (vehicle != null) vehicle.StopMoving();
 
         if (gameplayUI != null) gameplayUI.SetActive(false);
         if (finishUI != null) finishUI.SetActive(false);
@@ -52,5 +52,10 @@ public class LevelEndController : MonoBehaviour
         if (finishUI != null) finishUI.SetActive(false);
         if (loseUI != null) loseUI.SetActive(false);
         if (gameplayUI != null) gameplayUI.SetActive(true);
+    }
+
+    public void SetVehicle(VehicleMotor2D newVehicle)
+    {
+        vehicle = newVehicle;
     }
 }

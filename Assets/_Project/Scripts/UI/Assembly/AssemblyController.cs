@@ -107,9 +107,6 @@ public class AssemblyController : MonoBehaviour
         {
             if (s == null) continue;
 
-            foreach (var col2d in s.GetComponentsInChildren<Collider2D>(true))
-                col2d.enabled = false;
-
             var col3d = s.GetComponent<Collider>();
             if (col3d != null) col3d.enabled = false;
         }
@@ -155,5 +152,10 @@ public class AssemblyController : MonoBehaviour
         SetButton(wingsButtonUI, Has(ItemType.Wings));
 
         ClearHighlights();
+    }
+
+    public void SetVehicle(VehicleMotor2D newVehicle)
+    {
+        vehicle = newVehicle;
     }
 }
