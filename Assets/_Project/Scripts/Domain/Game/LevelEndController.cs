@@ -16,20 +16,29 @@ public class LevelEndController : MonoBehaviour
 
     [Header("Level Manager")]
     [SerializeField] private LevelManager levelManager;
+    [SerializeField] private LevelRewardAdWindow rewardAdWindow;
 
     public void Win()
     {
         if (CurrentState != State.Playing) return;
         CurrentState = State.Won;
 
-        levelManager.OnWin();
-
-        // стоп автодвижения, но физику не выключаем
+        // Stop the vehicle on win.
         if (vehicle != null) vehicle.StopMoving();
 
         if (gameplayUI != null) gameplayUI.SetActive(false);
         if (loseUI != null) loseUI.SetActive(false);
-        if (finishUI != null) finishUI.SetActive(true);
+
+        if (rewardAdWindow != null)
+        {
+            rewardAdWindow.Open(levelManager);
+            if (finishUI != null) finishUI.SetActive(false);
+        }
+        else
+        {
+            levelManager.OnWin();
+            if (finishUI != null) finishUI.SetActive(true);
+        }
     }
 
     public void Lose()

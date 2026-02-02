@@ -77,15 +77,24 @@ public class LevelManager : MonoBehaviour
         if (currentVehicle != null)
             Destroy(currentVehicle);
 
-        // 1) спавним RIG
-        currentVehicle = Instantiate(prefab, vehicleSpawnPoint.position, vehicleSpawnPoint.rotation);
+    public void OnWin(int rewardMultiplier = 1)
+        {
+            int multiplier = Mathf.Max(1, rewardMultiplier);
+            wallet.Add(lvl.rewardCoins * multiplier);
+        }
 
-        // 2) подставляем визуал
+    public void CompleteLevelAndStartNext(int rewardMultiplier = 1)
+    {
+        OnWin(rewardMultiplier);
+        NextLevelButton();
+    }
+
+        // 2) ГЇГ®Г¤Г±ГІГ ГўГ«ГїГҐГ¬ ГўГЁГ§ГіГ Г«
         var visualRoot = currentVehicle.GetComponentInChildren<VehicleVisualRoot>();
         if (visualRoot != null)
             visualRoot.SetVisual(vehiclePrefab);
 
-        // 3) прокидываем ссылки в другие системы
+        // 3) ГЇГ°Г®ГЄГЁГ¤Г»ГўГ ГҐГ¬ Г±Г±Г»Г«ГЄГЁ Гў Г¤Г°ГіГЈГЁГҐ Г±ГЁГ±ГІГҐГ¬Г»
         var motor = currentVehicle.GetComponent<VehicleMotor2D>();
         if (motor != null)
         {
