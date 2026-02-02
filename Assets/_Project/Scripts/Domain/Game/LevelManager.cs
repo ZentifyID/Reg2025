@@ -70,24 +70,15 @@ public class LevelManager : MonoBehaviour
             levelDesignRoot.GetChild(i).gameObject.SetActive(i == childIndex);
     }
 
-    private void SpawnVehicle(GameObject prefab, GameObject vehiclePrefab)
+    private void SpawnVehicle(GameObject vehiclePrefab)
     {
-        if (prefab == null || vehicleSpawnPoint == null) return;
+        if (vehiclePrefab == null || vehicleSpawnPoint == null) return;
 
         if (currentVehicle != null)
             Destroy(currentVehicle);
 
-    public void OnWin(int rewardMultiplier = 1)
-        {
-            int multiplier = Mathf.Max(1, rewardMultiplier);
-            wallet.Add(lvl.rewardCoins * multiplier);
-        }
-
-    public void CompleteLevelAndStartNext(int rewardMultiplier = 1)
-    {
-        OnWin(rewardMultiplier);
-        NextLevelButton();
-    }
+        currentVehicle = Instantiate(vehiclePrefab, vehicleSpawnPoint.position, vehicleSpawnPoint.rotation);
+        currentVehicle.transform.SetParent(vehicleSpawnPoint, true);
 
         // 2) ïîäñòàâëÿåì âèçóàë
         var visualRoot = currentVehicle.GetComponentInChildren<VehicleVisualRoot>();
@@ -98,23 +89,38 @@ public class LevelManager : MonoBehaviour
         var motor = currentVehicle.GetComponent<VehicleMotor2D>();
         if (motor != null)
         {
-            assemblyController.SetVehicle(motor);
-            wingsButton.SetVehicle(motor);
-            endController.SetVehicle(motor);
+            if (assemblyController != null)
+                assemblyController.SetVehicle(motor);
+            if (endController != null)
+                endController.SetVehicle(motor);
         }
     }
 
     public void OnWin()
     {
+        OnWin(1);
+    }
+
+    public void OnWin(int rewardMultiplier = 1)
+    {
         var lvl = levelDatas.GetByIndex(CurrentLevelIndex);
         if (lvl != null && wallet != null)
-            wallet.Add(lvl.rewardCoins);
+        {
+            int multiplier = Mathf.Max(1, rewardMultiplier);
+            wallet.Add(lvl.rewardCoins * multiplier);
+        }
 
         int next = CurrentLevelIndex + 1;
         if (next >= levelDatas.Count) next = 0;
 
         data.lastUnlockedLevel = Mathf.Max(data.lastUnlockedLevel, next);
         storage.Save(data);
+    }
+
+    public void CompleteLevelAndStartNext(int rewardMultiplier = 1)
+    {
+        OnWin(rewardMultiplier);
+        NextLevelButton();
     }
 
     public void NextLevelButton()
