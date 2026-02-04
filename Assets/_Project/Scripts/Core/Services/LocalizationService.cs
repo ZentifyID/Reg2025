@@ -11,7 +11,7 @@ public class LocalizationService : MonoBehaviour
 
     public event Action LanguageChanged;
 
-    [SerializeField] private string startLanguageCode = "en"; // или "ru"
+    [SerializeField] private string startLanguageCode = "en";
 
     private Dictionary<string, string> localizedText = new();
 
@@ -21,7 +21,6 @@ public class LocalizationService : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        // ВАЖНО: загрузить язык сразу
         SetLanguage(startLanguageCode);
 
         ServiceReady?.Invoke();

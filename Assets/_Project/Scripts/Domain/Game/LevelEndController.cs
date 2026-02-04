@@ -23,30 +23,18 @@ public class LevelEndController : MonoBehaviour
         if (CurrentState != State.Playing) return;
         CurrentState = State.Won;
 
-        // Stop the vehicle on win.
         if (vehicle != null) vehicle.StopMoving();
 
         if (gameplayUI != null) gameplayUI.SetActive(false);
         if (loseUI != null) loseUI.SetActive(false);
 
-        if (rewardAdWindow != null)
-        {
-            rewardAdWindow.Open(levelManager);
-            if (finishUI != null) finishUI.SetActive(false);
-        }
-        else
-        {
-            levelManager.OnWin();
-            if (finishUI != null) finishUI.SetActive(true);
-        }
+        if (finishUI != null) finishUI.SetActive(true);
     }
 
     public void Lose()
     {
         if (CurrentState != State.Playing) return;
         CurrentState = State.Lost;
-
-        levelManager.OnLose();
 
         if (vehicle != null) vehicle.StopMoving();
 
@@ -66,5 +54,57 @@ public class LevelEndController : MonoBehaviour
     public void SetVehicle(VehicleMotor2D newVehicle)
     {
         vehicle = newVehicle;
+    }
+
+    public void OnFinishSkip()
+    {
+        if (finishUI != null) finishUI.SetActive(false);
+        levelManager.CompleteLevelAndStartNext(1);
+    }
+
+    public void OnFinishWatchAd()
+    {
+        if (rewardAdWindow == null)
+        {
+            OnFinishSkip();
+            return;
+        }
+
+        if (finishUI != null) finishUI.SetActive(false);
+
+        rewardAdWindow.Open(
+            levelManager,
+            onCompleted: (multiplier) =>
+            {
+                levelManager.CompleteLevelAndStartNext(multiplier);
+            },
+            onCanceled: () =>
+            {
+                if (finishUI != null) finishUI.SetActive(true);
+            }
+        );
+    }
+
+    public void OnLoseRetry()
+    {
+        if (loseUI != null) loseUI.SetActive(false);
+        levelManager.ApplyLevel(levelManager.CurrentLevelIndex);
+    }
+
+    public void OnLoseWatchAd()
+    {
+        if (rewardAdWindow == null)
+        {
+            OnLoseRetry();
+            return;
+        }
+
+        if (loseUI != null) loseUI.SetActive(false);
+
+        rewardAdWindow.Open(
+            levelManager,
+            onCompleted: _ => levelManager.NextLevelButton(),
+            onCanceled: () => { if (loseUI != null) loseUI.SetActive(true); }
+        );
     }
 }

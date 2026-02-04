@@ -6,7 +6,7 @@ public class SlotClicker : MonoBehaviour
 {
     [SerializeField] private Camera cam;
     [SerializeField] private AssemblyController controller;
-    [SerializeField] private LayerMask slotLayer; // Slots3D
+    [SerializeField] private LayerMask slotLayer;
 
     private void Awake()
     {
@@ -18,7 +18,6 @@ public class SlotClicker : MonoBehaviour
         if (Mouse.current == null) return;
         if (!Mouse.current.leftButton.wasPressedThisFrame) return;
 
-        // чтобы клики по UI-кнопкам не ставили предметы
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
             return;
 

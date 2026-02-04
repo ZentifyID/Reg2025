@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FinishTrigger : MonoBehaviour
 {
-    [SerializeField] private string vehicleTag = "Player"; // или "Vehicle"
+    [SerializeField] private string vehicleTag = "Player";
     [SerializeField] private LevelEndController endController;
 
     private bool triggered;
@@ -11,11 +11,17 @@ public class FinishTrigger : MonoBehaviour
     {
         if (triggered) return;
 
-        if (!other.CompareTag(vehicleTag))
-            return;
+        var rb = other.attachedRigidbody;
+        if (rb != null)
+        {
+            if (!rb.CompareTag(vehicleTag)) return;
+        }
+        else
+        {
+            if (!other.transform.root.CompareTag(vehicleTag)) return;
+        }
 
         triggered = true;
-
         if (endController != null)
             endController.Win();
     }

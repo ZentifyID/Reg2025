@@ -26,6 +26,7 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log($"[LevelManager] Awake on {gameObject.name}", this);
         storage = new UserDataStorage();
         data = storage.LoadOrCreate() ?? new UserData { coins = 0 };
 
@@ -48,9 +49,37 @@ public class LevelManager : MonoBehaviour
 
         EnableLevelDesign(lvl.levelDesignIndex);
 
-        SpawnVehicle(lvl.vehiclePrefab);
+        var rover = FindFirstObjectByType<RoverVisual>();
+        if (rover != null)
+        {
+            if (vehicleSpawnPoint != null)
+            {
+                rover.transform.position = vehicleSpawnPoint.position;
+                rover.transform.rotation = vehicleSpawnPoint.rotation;
+            }
 
-        // assemblyController.SetupForLevel(level);
+            var spawned = rover.SetModel(lvl.vehiclePrefab);
+
+            var motor = spawned != null ? spawned.GetComponentInChildren<VehicleMotor2D>(true) : null;
+
+            if (motor != null)
+            {
+                if (assemblyController != null) assemblyController.SetVehicle(motor);
+                if (endController != null) endController.SetVehicle(motor);
+
+                var rb = motor.GetComponent<Rigidbody2D>();
+                if (rb != null)
+                {
+                    rb.linearVelocity = Vector2.zero;
+                    rb.angularVelocity = 0f;
+                    rb.simulated = true;
+                }
+            }
+            else
+            {
+                Debug.LogWarning("[LevelManager] VehicleMotor2D not found in spawned vehicle prefab!");
+            }
+        }
 
         if (assemblyController != null)
             assemblyController.SetupForLevel(lvl);
@@ -78,23 +107,24 @@ public class LevelManager : MonoBehaviour
             Destroy(currentVehicle);
 
         currentVehicle = Instantiate(vehiclePrefab, vehicleSpawnPoint.position, vehicleSpawnPoint.rotation);
-        currentVehicle.transform.SetParent(vehicleSpawnPoint, true);
+        currentVehicle.tag = "Player";
 
-        // 2) ïîäñòàâëÿåì âèçóàë
-        var visualRoot = currentVehicle.GetComponentInChildren<VehicleVisualRoot>();
-        if (visualRoot != null)
-            visualRoot.SetVisual(vehiclePrefab);
+        var rb = currentVehicle.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+            rb.simulated = true;
+        }
 
-        // 3) ïðîêèäûâàåì ññûëêè â äðóãèå ñèñòåìû
         var motor = currentVehicle.GetComponent<VehicleMotor2D>();
         if (motor != null)
         {
-            if (assemblyController != null)
-                assemblyController.SetVehicle(motor);
-            if (endController != null)
-                endController.SetVehicle(motor);
+            if (assemblyController != null) assemblyController.SetVehicle(motor);
+            if (endController != null) endController.SetVehicle(motor);
         }
     }
+
 
     public void OnWin()
     {

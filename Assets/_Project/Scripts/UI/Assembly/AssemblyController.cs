@@ -157,5 +157,8 @@ public class AssemblyController : MonoBehaviour
     public void SetVehicle(VehicleMotor2D newVehicle)
     {
         vehicle = newVehicle;
+
+        if (vehicle != null)
+            slots = vehicle.GetComponentsInChildren<AttachmentSlot>(true).ToList();
     }
 }

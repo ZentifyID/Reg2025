@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -22,30 +23,45 @@ public class LevelRewardAdWindow : MonoBehaviour
     private Coroutine videoRoutine;
     private LevelManager levelManager;
 
+    private Action<int> onCompleted;
+    private Action onCanceled;
+
     private void Awake()
     {
         if (watchAdButton != null)
             watchAdButton.onClick.AddListener(TryWatchVideo);
 
         if (skipButton != null)
-            skipButton.onClick.AddListener(() => CompleteReward(1));
+            skipButton.onClick.AddListener(CancelAndClose);
 
         if (closeVideoButton != null)
-            closeVideoButton.onClick.AddListener(CancelVideo);
+            closeVideoButton.onClick.AddListener(CancelAndClose);
 
         if (videoOverlay != null) videoOverlay.SetActive(false);
         if (root != null) root.SetActive(false);
     }
 
-    public void Open(LevelManager manager)
+    public void Open(LevelManager manager, Action<int> onCompleted, Action onCanceled)
     {
         levelManager = manager;
+        this.onCompleted = onCompleted;
+        this.onCanceled = onCanceled;
+
+        if (videoOverlay != null) videoOverlay.SetActive(false);
+        if (videoProgressText != null) videoProgressText.text = "";
+
         if (root != null) root.SetActive(true);
+
+        TryWatchVideo();
     }
 
     private void TryWatchVideo()
     {
         if (videoRoutine != null) return;
+
+        if (watchAdButton != null) watchAdButton.interactable = false;
+        if (skipButton != null) skipButton.interactable = false;
+
         videoRoutine = StartCoroutine(VideoFlow());
     }
 
@@ -66,10 +82,11 @@ public class LevelRewardAdWindow : MonoBehaviour
 
         if (videoOverlay != null) videoOverlay.SetActive(false);
         videoRoutine = null;
+
         CompleteReward(Mathf.Max(1, rewardMultiplier));
     }
 
-    private void CancelVideo()
+    private void CancelAndClose()
     {
         if (videoRoutine != null)
         {
@@ -77,20 +94,35 @@ public class LevelRewardAdWindow : MonoBehaviour
             videoRoutine = null;
         }
 
-        if (videoOverlay != null)
-            videoOverlay.SetActive(false);
+        if (videoOverlay != null) videoOverlay.SetActive(false);
+
+        if (watchAdButton != null) watchAdButton.interactable = true;
+        if (skipButton != null) skipButton.interactable = true;
+
+        CloseRoot();
+        onCanceled?.Invoke();
+        ClearCallbacks();
     }
 
     private void CompleteReward(int multiplier)
     {
-        Close();
-        if (levelManager != null)
-            levelManager.CompleteLevelAndStartNext(multiplier);
+        if (watchAdButton != null) watchAdButton.interactable = true;
+        if (skipButton != null) skipButton.interactable = true;
+
+        CloseRoot();
+        onCompleted?.Invoke(multiplier);
+        ClearCallbacks();
     }
 
-    private void Close()
+    private void CloseRoot()
     {
-        CancelVideo();
         if (root != null) root.SetActive(false);
+    }
+
+    private void ClearCallbacks()
+    {
+        onCompleted = null;
+        onCanceled = null;
+        levelManager = null;
     }
 }
