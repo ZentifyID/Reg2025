@@ -43,46 +43,51 @@ public class LevelManager : MonoBehaviour
     public void ApplyLevel(int levelIndex)
     {
         CurrentLevelIndex = Mathf.Clamp(levelIndex, 0, levelDatas.Count - 1);
+        Debug.Log($"[LevelManager] ApplyLevel {CurrentLevelIndex}. assemblyController null? {assemblyController == null}");
 
         var lvl = levelDatas.GetByIndex(CurrentLevelIndex);
         if (lvl == null) return;
 
         EnableLevelDesign(lvl.levelDesignIndex);
 
-        var rover = FindFirstObjectByType<RoverVisual>();
-        if (rover != null)
+        var motor = FindFirstObjectByType<VehicleMotor2D>();
+        if (motor != null)
         {
             if (vehicleSpawnPoint != null)
             {
-                rover.transform.position = vehicleSpawnPoint.position;
-                rover.transform.rotation = vehicleSpawnPoint.rotation;
+                motor.transform.position = vehicleSpawnPoint.position;
+                motor.transform.rotation = vehicleSpawnPoint.rotation;
             }
 
-            var spawned = rover.SetModel(lvl.vehiclePrefab);
-
-            var motor = spawned != null ? spawned.GetComponentInChildren<VehicleMotor2D>(true) : null;
-
-            if (motor != null)
+            var rb = motor.GetComponent<Rigidbody2D>();
+            if (rb != null)
             {
-                if (assemblyController != null) assemblyController.SetVehicle(motor);
-                if (endController != null) endController.SetVehicle(motor);
+                rb.linearVelocity = Vector2.zero;
+                rb.angularVelocity = 0f;
+                // rb.simulated = false; // если хочешь стоять до StartRun
+            }
 
-                var rb = motor.GetComponent<Rigidbody2D>();
-                if (rb != null)
-                {
-                    rb.linearVelocity = Vector2.zero;
-                    rb.angularVelocity = 0f;
-                    rb.simulated = true;
-                }
-            }
-            else
-            {
-                Debug.LogWarning("[LevelManager] VehicleMotor2D not found in spawned vehicle prefab!");
-            }
+            if (assemblyController != null) assemblyController.SetVehicle(motor);
+            if (endController != null) endController.SetVehicle(motor);
         }
+        else
+        {
+            Debug.LogWarning("[LevelManager] VehicleMotor2D not found in scene!");
+        }
+
+        var roverVisual = FindFirstObjectByType<RoverVisual>();
+        if (roverVisual != null)
+            roverVisual.SetModel(lvl.vehiclePrefab);
 
         if (assemblyController != null)
             assemblyController.SetupForLevel(lvl);
+
+        var startUI = FindFirstObjectByType<GameStartController>();
+        if (startUI != null)
+        {
+            if (motor != null) startUI.SetMotor(motor); // добавь метод
+            startUI.ResetToAssembly();
+        }
 
         if (endController != null)
             endController.ResetToPlaying();

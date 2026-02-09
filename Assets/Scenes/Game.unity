@@ -671,6 +671,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 67647067}
   m_CullTransparentMesh: 1
+--- !u!1 &70623049
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 70623050}
+  m_Layer: 10
+  m_Name: Spawnpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &70623050
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70623049}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.3, y: 10, z: 9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &77058017
 GameObject:
   m_ObjectHideFlags: 0
@@ -2565,11 +2596,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6886300439332160467, guid: ce954adba000a914082b734cb56f483c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 28
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6886300439332160467, guid: ce954adba000a914082b734cb56f483c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.55
+      value: 0.33
       objectReference: {fileID: 0}
     - target: {fileID: 6886300439332160467, guid: ce954adba000a914082b734cb56f483c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5052,6 +5083,7 @@ GameObject:
   - component: {fileID: 877105868}
   - component: {fileID: 877105867}
   - component: {fileID: 877105866}
+  - component: {fileID: 877105870}
   m_Layer: 5
   m_Name: WingsAbility
   m_TagString: Untagged
@@ -5103,7 +5135,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1021046468}
+      - m_Target: {fileID: 877105870}
         m_TargetAssemblyTypeName: WingsButtonController, Assembly-CSharp
         m_MethodName: UseWings
         m_Mode: 1
@@ -5173,6 +5205,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &877105870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877105864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82562b3da84ae304fa77ebc0c5bad6a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WingsButtonController
+  vehicle: {fileID: 670835297}
+  assembly: {fileID: 1250006785}
+  button: {fileID: 877105866}
 --- !u!1 &895573240
 GameObject:
   m_ObjectHideFlags: 0
@@ -5950,7 +5997,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1021046467}
   - component: {fileID: 1021046466}
-  - component: {fileID: 1021046468}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -5971,12 +6017,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameStartController
   assemblyUIRoot: {fileID: 87480044}
-  startButton: {fileID: 1263452788}
   gameplayUIRoot: {fileID: 1400261866}
   assemblyController: {fileID: 1250006785}
   vehicleStart: {fileID: 670835296}
   motor: {fileID: 670835297}
-  wingsButton: {fileID: 1021046468}
+  wingsButton: {fileID: 877105870}
 --- !u!4 &1021046467
 Transform:
   m_ObjectHideFlags: 0
@@ -5992,21 +6037,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 969973166}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1021046468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1021046465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82562b3da84ae304fa77ebc0c5bad6a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WingsButtonController
-  vehicle: {fileID: 670835297}
-  assembly: {fileID: 1250006785}
-  button: {fileID: 877105866}
 --- !u!1 &1023092750
 GameObject:
   m_ObjectHideFlags: 0
@@ -6708,11 +6738,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5441627696676923685, guid: 04459c3fe53a4da4a9cf675ba475877b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5441627696676923685, guid: 04459c3fe53a4da4a9cf675ba475877b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5441627696676923685, guid: 04459c3fe53a4da4a9cf675ba475877b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7488,7 +7518,7 @@ MonoBehaviour:
   wingsPrefab: {fileID: 3079876389149384302, guid: 4ce6b59c67af3794fb819368bd826a2f, type: 3}
   startButton: {fileID: 1263452788}
   vehicle: {fileID: 670835297}
-  wingsButton: {fileID: 1021046468}
+  wingsButton: {fileID: 877105870}
   wheelsAButton: {fileID: 812190801}
   wheelsBButton: {fileID: 1576169281}
   wingsButtonUI: {fileID: 1757826632}
@@ -8082,7 +8112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
   levelDatas: {fileID: 11400000, guid: 015514fd4a17bd14e9582866747275d3, type: 2}
   levelDesignRoot: {fileID: 1505183194}
-  vehicleSpawnPoint: {fileID: 670835294}
+  vehicleSpawnPoint: {fileID: 70623050}
   levelText: {fileID: 1338948761}
   assemblyController: {fileID: 1250006785}
   endController: {fileID: 1157403825}
@@ -9754,11 +9784,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6704373081457869041, guid: cf773b5645916d14d9a153e70ad25ef1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 38
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6704373081457869041, guid: cf773b5645916d14d9a153e70ad25ef1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 6704373081457869041, guid: cf773b5645916d14d9a153e70ad25ef1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12299,6 +12329,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 746421107}
   - {fileID: 670835294}
+  - {fileID: 70623050}
   - {fileID: 1505183194}
   - {fileID: 1677928363}
   - {fileID: 1157341945}

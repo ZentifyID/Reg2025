@@ -57,10 +57,8 @@ public class AssemblyController : MonoBehaviour
         if (prefab == null) return;
 
         slot.Place(prefab);
-        if (selectedItem == ItemType.Wings)
-        {
+        if (selectedItem == ItemType.Wings && vehicle != null)
             vehicle.SetHasWings(true);
-        }
 
         UpdateHighlights();
         CheckAllPlaced();
@@ -103,6 +101,9 @@ public class AssemblyController : MonoBehaviour
         Phase = GamePhase.Run;
         ClearHighlights();
 
+        if (startButton != null)
+            startButton.SetActive(false);
+
         foreach (var s in slots)
         {
             if (s == null) continue;
@@ -114,9 +115,14 @@ public class AssemblyController : MonoBehaviour
 
     public void SetupForLevel(LevelData level)
     {
-        Phase = GamePhase.Assembly;
+        Debug.Log($"[Assembly] SetupForLevel called. Level is null? {level == null}. " +
+          $"requiredItems: {(level?.requiredItems == null ? "null" : string.Join(",", level.requiredItems))}");
 
+        Phase = GamePhase.Assembly;
         selectedItem = null;
+
+        if (vehicle != null)
+            slots = vehicle.GetComponentsInChildren<AttachmentSlot>(true).ToList();
 
         if (startButton != null)
             startButton.SetActive(false);
