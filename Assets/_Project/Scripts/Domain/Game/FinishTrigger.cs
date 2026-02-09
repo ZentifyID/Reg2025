@@ -25,4 +25,11 @@ public class FinishTrigger : MonoBehaviour
         if (endController != null)
             endController.Win();
     }
+
+    public void ResetTrigger()
+    {
+        triggered = false;
+        var col = GetComponent<Collider2D>();
+        if (col != null) col.enabled = true;
+    }
 }

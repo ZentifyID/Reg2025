@@ -4,7 +4,7 @@ public class RoverVisual : MonoBehaviour
 {
     [SerializeField] private Transform modelRoot;
     private GameObject current;
-
+    public Transform CurrentModelTransform => current != null ? current.transform : null;
     public GameObject SetModel(GameObject modelPrefab)
     {
         if (modelRoot == null) return null;

@@ -24,6 +24,7 @@ public class AssemblyController : MonoBehaviour
     [SerializeField] private GameObject wingsButtonUI;
 
     private ItemType? selectedItem;
+    private HashSet<ItemType> required;
 
     public GamePhase Phase { get; private set; } = GamePhase.Assembly;
 
@@ -92,8 +93,27 @@ public class AssemblyController : MonoBehaviour
 
     private void CheckAllPlaced()
     {
-        bool allOccupied = slots.All(s => s.IsOccupied);
-        if (startButton != null) startButton.SetActive(allOccupied);
+        if (required == null || required.Count == 0)
+        {
+            if (startButton != null) startButton.SetActive(true);
+            return;
+        }
+
+        bool allRequiredOccupied = true;
+
+        foreach (var t in required)
+        {
+            var slot = slots.FirstOrDefault(s => s != null && s.Accepts == t);
+
+            if (slot == null || !slot.IsOccupied)
+            {
+                allRequiredOccupied = false;
+                break;
+            }
+        }
+
+        if (startButton != null)
+            startButton.SetActive(allRequiredOccupied);
     }
 
     public void OnStartRun()
@@ -117,6 +137,10 @@ public class AssemblyController : MonoBehaviour
     {
         Debug.Log($"[Assembly] SetupForLevel called. Level is null? {level == null}. " +
           $"requiredItems: {(level?.requiredItems == null ? "null" : string.Join(",", level.requiredItems))}");
+
+        required = (level != null && level.requiredItems != null)
+            ? new HashSet<ItemType>(level.requiredItems)
+            : new HashSet<ItemType>();
 
         Phase = GamePhase.Assembly;
         selectedItem = null;
@@ -158,6 +182,7 @@ public class AssemblyController : MonoBehaviour
         SetButton(wingsButtonUI, Has(ItemType.Wings));
 
         ClearHighlights();
+        CheckAllPlaced();
     }
 
     public void SetVehicle(VehicleMotor2D newVehicle)

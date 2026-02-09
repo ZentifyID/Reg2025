@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,6 +17,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private AssemblyController assemblyController;
     [SerializeField] private LevelEndController endController;
     [SerializeField] private CoinWallet wallet;
+    [SerializeField] private SlotAnchorBinder slotAnchorBinder;
 
     private UserDataStorage storage;
     private UserData data;
@@ -49,6 +51,7 @@ public class LevelManager : MonoBehaviour
         if (lvl == null) return;
 
         EnableLevelDesign(lvl.levelDesignIndex);
+        ResetFinishForActiveDesign(lvl.levelDesignIndex);
 
         var motor = FindFirstObjectByType<VehicleMotor2D>();
         if (motor != null)
@@ -78,6 +81,9 @@ public class LevelManager : MonoBehaviour
         var roverVisual = FindFirstObjectByType<RoverVisual>();
         if (roverVisual != null)
             roverVisual.SetModel(lvl.vehiclePrefab);
+
+        roverVisual.SetModel(lvl.vehiclePrefab);
+        slotAnchorBinder.Rebind();
 
         if (assemblyController != null)
             assemblyController.SetupForLevel(lvl);
@@ -169,5 +175,15 @@ public class LevelManager : MonoBehaviour
     {
         data.lastUnlockedLevel = 0;
         storage.Save(data);
+    }
+
+    private void ResetFinishForActiveDesign(int childIndex)
+    {
+        if (levelDesignRoot == null) return;
+        if (childIndex < 0 || childIndex >= levelDesignRoot.childCount) return;
+
+        var active = levelDesignRoot.GetChild(childIndex);
+        var finish = active.GetComponentInChildren<FinishTrigger>(true);
+        if (finish != null) finish.ResetTrigger();
     }
 }
