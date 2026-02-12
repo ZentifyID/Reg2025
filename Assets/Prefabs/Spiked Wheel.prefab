@@ -140,7 +140,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: e083035b8cd0eb4469c6e37faa1c6b02, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: cef9408fc3d0f1b4f8857e64bdac10e6, type: 2}
     - target: {fileID: 919132149155446097, guid: e083035b8cd0eb4469c6e37faa1c6b02, type: 3}
@@ -166,7 +166,7 @@ PrefabInstance:
     m_TransformParent: {fileID: 2615678907916751126}
     m_Modifications:
     - target: {fileID: -8819351472760628069, guid: c702fabdfe8be3049b246b0d46a7c604, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: cef9408fc3d0f1b4f8857e64bdac10e6, type: 2}
     - target: {fileID: -8679921383154817045, guid: c702fabdfe8be3049b246b0d46a7c604, type: 3}
@@ -198,7 +198,7 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: c702fabdfe8be3049b246b0d46a7c604, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: cef9408fc3d0f1b4f8857e64bdac10e6, type: 2}
     - target: {fileID: 919132149155446097, guid: c702fabdfe8be3049b246b0d46a7c604, type: 3}
@@ -244,6 +244,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5661576481967061193, guid: c702fabdfe8be3049b246b0d46a7c604, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6819908970583581236}
+    - targetCorrespondingSourceObject: {fileID: 5661576481967061193, guid: c702fabdfe8be3049b246b0d46a7c604, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5442264593229044720}
   m_SourcePrefab: {fileID: 100100000, guid: c702fabdfe8be3049b246b0d46a7c604, type: 3}
 --- !u!1 &561986339439950711 stripped
 GameObject:
@@ -252,7 +255,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!50 &6520749465927927460
 Rigidbody2D:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -263,8 +266,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -285,6 +288,7 @@ CircleCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 561986339439950711}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -308,9 +312,9 @@ CircleCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
   m_Radius: 0.3
 --- !u!235 &2319663872690109999
 WheelJoint2D:
@@ -357,6 +361,20 @@ TargetJoint2D:
   m_MaxForce: 10000
   m_DampingRatio: 1
   m_Frequency: 5
+--- !u!114 &5442264593229044720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561986339439950711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df0e1ac867701264dacfc1df4ea4715a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WheelRotation
+  speed: 500
+  axis: {x: 1, y: 0, z: 0}
 --- !u!4 &5681254870323553365 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c702fabdfe8be3049b246b0d46a7c604, type: 3}
@@ -420,7 +438,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: e083035b8cd0eb4469c6e37faa1c6b02, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: cef9408fc3d0f1b4f8857e64bdac10e6, type: 2}
     - target: {fileID: 919132149155446097, guid: e083035b8cd0eb4469c6e37faa1c6b02, type: 3}

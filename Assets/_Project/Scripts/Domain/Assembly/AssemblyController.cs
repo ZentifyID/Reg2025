@@ -10,6 +10,9 @@ public class AssemblyController : MonoBehaviour
     [Header("Prefabs to place")]
     [SerializeField] private GameObject wheelsPrefab;
     [SerializeField] private GameObject wingsPrefab;
+    [SerializeField] private GameObject propellerPrefab;
+    [SerializeField] private GameObject spikedWheelsPrefab;
+    [SerializeField] private GameObject rocketPrefab;
 
     [Header("UI")]
     [SerializeField] private GameObject startButton;
@@ -22,9 +25,13 @@ public class AssemblyController : MonoBehaviour
     [SerializeField] private GameObject wheelsAButton;
     [SerializeField] private GameObject wheelsBButton;
     [SerializeField] private GameObject wingsButtonUI;
+    [SerializeField] private GameObject propellerButton;
+    [SerializeField] private GameObject spikedWheelsAButton;
+    [SerializeField] private GameObject spikedWheelsBButton;
+    [SerializeField] private GameObject rocketButton;
 
     private ItemType? selectedItem;
-    private HashSet<ItemType> required;
+    private HashSet<ItemType> required = new HashSet<ItemType>();
 
     public GamePhase Phase { get; private set; } = GamePhase.Assembly;
 
@@ -71,7 +78,13 @@ public class AssemblyController : MonoBehaviour
         {
             ItemType.WheelsA => wheelsPrefab,
             ItemType.WheelsB => wheelsPrefab,
+
             ItemType.Wings => wingsPrefab,
+            ItemType.Propeller => propellerPrefab,
+            ItemType.SpikedWheelsA => spikedWheelsPrefab,
+            ItemType.SpikedWheelsB => spikedWheelsPrefab,
+            ItemType.Rocket => rocketPrefab,
+
             _ => null
         };
     }
@@ -93,27 +106,26 @@ public class AssemblyController : MonoBehaviour
 
     private void CheckAllPlaced()
     {
+        if (startButton == null) return;
+
         if (required == null || required.Count == 0)
         {
-            if (startButton != null) startButton.SetActive(true);
+            startButton.SetActive(true);
             return;
         }
 
-        bool allRequiredOccupied = true;
+        bool ok = true;
 
-        foreach (var t in required)
+        foreach (var req in required)
         {
-            var slot = slots.FirstOrDefault(s => s != null && s.Accepts == t);
-
+            var slot = slots.FirstOrDefault(s => s != null && s.Accepts == req);
             if (slot == null || !slot.IsOccupied)
             {
-                allRequiredOccupied = false;
+                ok = false;
                 break;
             }
         }
-
-        if (startButton != null)
-            startButton.SetActive(allRequiredOccupied);
+        startButton.SetActive(ok);
     }
 
     public void OnStartRun()
@@ -135,9 +147,6 @@ public class AssemblyController : MonoBehaviour
 
     public void SetupForLevel(LevelData level)
     {
-        Debug.Log($"[Assembly] SetupForLevel called. Level is null? {level == null}. " +
-          $"requiredItems: {(level?.requiredItems == null ? "null" : string.Join(",", level.requiredItems))}");
-
         required = (level != null && level.requiredItems != null)
             ? new HashSet<ItemType>(level.requiredItems)
             : new HashSet<ItemType>();
@@ -147,6 +156,8 @@ public class AssemblyController : MonoBehaviour
 
         if (vehicle != null)
             slots = vehicle.GetComponentsInChildren<AttachmentSlot>(true).ToList();
+
+        ApplySlotActiveByLevel();
 
         if (startButton != null)
             startButton.SetActive(false);
@@ -160,6 +171,7 @@ public class AssemblyController : MonoBehaviour
         foreach (var s in slots)
         {
             if (s == null) continue;
+            if (!s.gameObject.activeSelf) continue;
 
             foreach (var col2d in s.GetComponentsInChildren<Collider2D>(true))
                 col2d.enabled = true;
@@ -175,11 +187,15 @@ public class AssemblyController : MonoBehaviour
             if (go != null) go.SetActive(active);
         }
 
-        bool Has(ItemType t) => level != null && level.requiredItems != null && level.requiredItems.Contains(t);
+        bool Has(ItemType t) => required.Contains(t);
 
         SetButton(wheelsAButton, Has(ItemType.WheelsA));
         SetButton(wheelsBButton, Has(ItemType.WheelsB));
         SetButton(wingsButtonUI, Has(ItemType.Wings));
+        SetButton(propellerButton, Has(ItemType.Propeller));
+        SetButton(spikedWheelsAButton, Has(ItemType.SpikedWheelsA));
+        SetButton(spikedWheelsBButton, Has(ItemType.SpikedWheelsB));
+        SetButton(rocketButton, Has(ItemType.Rocket));
 
         ClearHighlights();
         CheckAllPlaced();
@@ -191,5 +207,24 @@ public class AssemblyController : MonoBehaviour
 
         if (vehicle != null)
             slots = vehicle.GetComponentsInChildren<AttachmentSlot>(true).ToList();
+    }
+
+    private void ApplySlotActiveByLevel()
+    {
+        if (slots == null) return;
+
+        foreach (var s in slots)
+        {
+            if (s == null) continue;
+
+            bool needed = required != null && required.Contains(s.Accepts);
+
+            // если слот не нужен Ч чистим установленный предмет, чтобы не оставалс€ в пам€ти
+            if (!needed)
+                s.Clear();
+
+            // главное требование: включить/выключить сам слот
+            s.gameObject.SetActive(needed);
+        }
     }
 }

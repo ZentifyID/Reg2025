@@ -22,6 +22,6 @@ MonoBehaviour:
     vehiclePrefab: {fileID: 286638946415238250, guid: 034dcec99328b7a4e85385ada562a14a, type: 3}
     levelDesignIndex: 1
   - rewardCoins: 25
-    requiredItems: 0000000001000000
+    requiredItems: 05000000060000000400000002000000
     vehiclePrefab: {fileID: 286638946415238250, guid: 4db707369bc3ecf448703e68852f671d, type: 3}
     levelDesignIndex: 2

@@ -6,5 +6,6 @@ public enum ItemType
     Wings,
     Rocket,
     Propeller,
-    Spikes
+    SpikedWheelsA,
+    SpikedWheelsB,
 }
