@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelDatas
   levels:
   - rewardCoins: 25
-    requiredItems: 000000000100000002000000
+    requiredItems: 000000000100000004000000
     vehiclePrefab: {fileID: 286638946415238250, guid: a822982d14a49bc42a0f7c4395804e99, type: 3}
     levelDesignIndex: 0
   - rewardCoins: 25
@@ -22,6 +22,6 @@ MonoBehaviour:
     vehiclePrefab: {fileID: 286638946415238250, guid: 034dcec99328b7a4e85385ada562a14a, type: 3}
     levelDesignIndex: 1
   - rewardCoins: 25
-    requiredItems: 05000000060000000400000002000000
+    requiredItems: 05000000060000000400000003000000
     vehiclePrefab: {fileID: 286638946415238250, guid: 4db707369bc3ecf448703e68852f671d, type: 3}
     levelDesignIndex: 2

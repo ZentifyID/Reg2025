@@ -17,15 +17,16 @@ public class AssemblyController : MonoBehaviour
     [Header("UI")]
     [SerializeField] private GameObject startButton;
 
-    [Header("Wings Check")]
+    [Header("Ability Check")]
     [SerializeField] private VehicleMotor2D vehicle;
     [SerializeField] private WingsButtonController wingsButton;
+    [SerializeField] private PropellerButtonController propellerButton;
 
     [Header("Item Buttons")]
     [SerializeField] private GameObject wheelsAButton;
     [SerializeField] private GameObject wheelsBButton;
     [SerializeField] private GameObject wingsButtonUI;
-    [SerializeField] private GameObject propellerButton;
+    [SerializeField] private GameObject propellerButtonUI;
     [SerializeField] private GameObject spikedWheelsAButton;
     [SerializeField] private GameObject spikedWheelsBButton;
     [SerializeField] private GameObject rocketButton;
@@ -66,7 +67,20 @@ public class AssemblyController : MonoBehaviour
 
         slot.Place(prefab);
         if (selectedItem == ItemType.Wings && vehicle != null)
+        {
             vehicle.SetHasWings(true);
+        }
+
+        if (selectedItem == ItemType.Propeller && vehicle != null)
+        {
+            vehicle.SetHasPropeller(true);
+            Debug.Log("[Assembly] Propeller installed, HasPropeller=" + vehicle.HasPropeller);
+        }
+
+        if (selectedItem == ItemType.Rocket && vehicle != null)
+        {
+            vehicle.SetHasRocket(true);
+        }
 
         UpdateHighlights();
         CheckAllPlaced();
@@ -160,13 +174,26 @@ public class AssemblyController : MonoBehaviour
         ApplySlotActiveByLevel();
 
         if (startButton != null)
+        {
             startButton.SetActive(false);
+        }
 
         if (vehicle != null)
+        {
             vehicle.SetHasWings(false);
+            vehicle.SetHasPropeller(false);
+            vehicle.SetHasRocket(false);
+        }
 
         if (wingsButton != null)
+        {
             wingsButton.Refresh();
+        }
+
+        if (propellerButton != null)
+        {
+            propellerButton.Refresh();
+        }
 
         foreach (var s in slots)
         {
@@ -192,7 +219,7 @@ public class AssemblyController : MonoBehaviour
         SetButton(wheelsAButton, Has(ItemType.WheelsA));
         SetButton(wheelsBButton, Has(ItemType.WheelsB));
         SetButton(wingsButtonUI, Has(ItemType.Wings));
-        SetButton(propellerButton, Has(ItemType.Propeller));
+        SetButton(propellerButtonUI, Has(ItemType.Propeller));
         SetButton(spikedWheelsAButton, Has(ItemType.SpikedWheelsA));
         SetButton(spikedWheelsBButton, Has(ItemType.SpikedWheelsB));
         SetButton(rocketButton, Has(ItemType.Rocket));

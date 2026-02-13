@@ -11,9 +11,21 @@ public class VehicleMotor2D : MonoBehaviour
     [SerializeField] private float wingsImpulse = 6f;
     [SerializeField] private float wingsCooldown = 1f;
 
+    [Header("Propeller")]
+    [SerializeField] private float propellerForce = 20f;
+
+    [Header("Rocket")]
+    [SerializeField] private bool hasRocket;
+
+    private bool hasPropeller;
+    private bool propellerHeld;
+    public bool HasPropeller => hasPropeller;
+    public bool IsPropellerHeld => propellerHeld;
+
+    public bool HasRocket => hasRocket;
+
     private Rigidbody2D rb;
     private float nextWingsTime;
-
     public bool HasWings { get; private set; }
 
     private void Awake()
@@ -27,6 +39,11 @@ public class VehicleMotor2D : MonoBehaviour
     {
         if (!autoMove) return;
         rb.linearVelocity = new Vector2(forwardSpeed, rb.linearVelocity.y);
+
+        if (propellerHeld)
+        {
+            rb.AddForce(transform.right * propellerForce, ForceMode2D.Force);
+        }
     }
 
     public void StartMoving()
@@ -39,6 +56,24 @@ public class VehicleMotor2D : MonoBehaviour
     {
         HasWings = value;
         Debug.Log("[VehicleMotor2D] HasWings=" + HasWings);
+    }
+
+    public void SetHasPropeller(bool value)
+    {
+        hasPropeller = value;
+        if (!hasPropeller)
+            propellerHeld = false;
+    }
+
+    public void SetHasRocket(bool value)
+    {
+        hasRocket = value;
+    }
+
+    public void SetPropellerHeld(bool held)
+    {
+        if (!hasPropeller) { propellerHeld = false; return; }
+        propellerHeld = held;
     }
 
     public bool TryUseWings()

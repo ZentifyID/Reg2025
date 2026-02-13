@@ -1072,6 +1072,10 @@ PrefabInstance:
       value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6886300439332160467, guid: ce954adba000a914082b734cb56f483c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6886300439332160467, guid: ce954adba000a914082b734cb56f483c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 28
       objectReference: {fileID: 0}
@@ -1912,7 +1916,7 @@ CircleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 2c25e6aa335859043b4cd55edbec2395, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2864,7 +2868,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 2c25e6aa335859043b4cd55edbec2395, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3040,6 +3044,10 @@ PrefabInstance:
     - target: {fileID: 6003408332283054190, guid: ce954adba000a914082b734cb56f483c, type: 3}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 6886300439332160467, guid: ce954adba000a914082b734cb56f483c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6886300439332160467, guid: ce954adba000a914082b734cb56f483c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4152,7 +4160,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 2c25e6aa335859043b4cd55edbec2395, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -4203,6 +4211,7 @@ GameObject:
   - component: {fileID: 670835295}
   - component: {fileID: 670835299}
   - component: {fileID: 670835300}
+  - component: {fileID: 670835301}
   m_Layer: 10
   m_Name: Rover
   m_TagString: Vehicle
@@ -4272,6 +4281,8 @@ MonoBehaviour:
   autoMove: 0
   wingsImpulse: 6
   wingsCooldown: 1
+  propellerForce: 30
+  hasRocket: 0
 --- !u!50 &670835298
 Rigidbody2D:
   serializedVersion: 5
@@ -4288,7 +4299,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 2c25e6aa335859043b4cd55edbec2395, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -4327,6 +4338,22 @@ MonoBehaviour:
   roverVisual: {fileID: 670835299}
   vehicleSlotsRoot: {fileID: 1565074738}
   anchorsRootName: SlotAnchors
+--- !u!114 &670835301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670835293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eee31a0f70e96b41bc3206e923fa80c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RocketLauncher
+  vehicle: {fileID: 670835297}
+  firePoint: {fileID: 1199538254}
+  rocketPrefab: {fileID: 4670632150839282206, guid: 6aa795fd7144d8b4181fac3758cc2db0, type: 3}
+  cooldown: 2
 --- !u!4 &673323345 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2615678907916751126, guid: 38ca74d810ada694da053d7aa1eaf0dc, type: 3}
@@ -5518,7 +5545,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &826721418
 Transform:
   m_ObjectHideFlags: 0
@@ -5539,6 +5566,7 @@ Transform:
   - {fileID: 218379210}
   - {fileID: 1095414755}
   - {fileID: 1051418831}
+  - {fileID: 988647924}
   m_Father: {fileID: 1505183194}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &827292479
@@ -5770,7 +5798,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6704373081457869041, guid: cf773b5645916d14d9a153e70ad25ef1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.03
       objectReference: {fileID: 0}
     - target: {fileID: 6704373081457869041, guid: cf773b5645916d14d9a153e70ad25ef1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6966,6 +6994,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 985189737}
   m_CullTransparentMesh: 1
+--- !u!4 &988647924 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2151379296079118973, guid: 571755b29d36a9f40ac585f4dd53cb75, type: 3}
+  m_PrefabInstance: {fileID: 1170683687}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &993082558
 GameObject:
   m_ObjectHideFlags: 0
@@ -7322,6 +7355,7 @@ MonoBehaviour:
   vehicleStart: {fileID: 670835296}
   motor: {fileID: 670835297}
   wingsButton: {fileID: 877105870}
+  propellerButton: {fileID: 1846623592}
 --- !u!4 &1021046467
 Transform:
   m_ObjectHideFlags: 0
@@ -8487,6 +8521,67 @@ MonoBehaviour:
   vehicle: {fileID: 670835297}
   levelManager: {fileID: 1315940805}
   rewardAdWindow: {fileID: 335392544}
+--- !u!1001 &1170683687
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 826721418}
+    m_Modifications:
+    - target: {fileID: 589047285854655884, guid: 571755b29d36a9f40ac585f4dd53cb75, type: 3}
+      propertyPath: m_Name
+      value: Cups
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151379296079118973, guid: 571755b29d36a9f40ac585f4dd53cb75, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151379296079118973, guid: 571755b29d36a9f40ac585f4dd53cb75, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151379296079118973, guid: 571755b29d36a9f40ac585f4dd53cb75, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151379296079118973, guid: 571755b29d36a9f40ac585f4dd53cb75, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151379296079118973, guid: 571755b29d36a9f40ac585f4dd53cb75, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151379296079118973, guid: 571755b29d36a9f40ac585f4dd53cb75, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151379296079118973, guid: 571755b29d36a9f40ac585f4dd53cb75, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151379296079118973, guid: 571755b29d36a9f40ac585f4dd53cb75, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151379296079118973, guid: 571755b29d36a9f40ac585f4dd53cb75, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151379296079118973, guid: 571755b29d36a9f40ac585f4dd53cb75, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5985105975192178634, guid: 571755b29d36a9f40ac585f4dd53cb75, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 571755b29d36a9f40ac585f4dd53cb75, type: 3}
 --- !u!1 &1189016860
 GameObject:
   m_ObjectHideFlags: 0
@@ -8970,10 +9065,11 @@ MonoBehaviour:
   startButton: {fileID: 1263452788}
   vehicle: {fileID: 670835297}
   wingsButton: {fileID: 877105870}
+  propellerButton: {fileID: 1846623592}
   wheelsAButton: {fileID: 1143283216}
   wheelsBButton: {fileID: 1808093946}
   wingsButtonUI: {fileID: 1757826632}
-  propellerButton: {fileID: 355209444}
+  propellerButtonUI: {fileID: 355209444}
   spikedWheelsAButton: {fileID: 1488475002}
   spikedWheelsBButton: {fileID: 249380236}
   rocketButton: {fileID: 371027035}
@@ -11686,12 +11782,16 @@ PrefabInstance:
       value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6886300439332160467, guid: ce954adba000a914082b734cb56f483c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6886300439332160467, guid: ce954adba000a914082b734cb56f483c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 6886300439332160467, guid: ce954adba000a914082b734cb56f483c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.04
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 6886300439332160467, guid: ce954adba000a914082b734cb56f483c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11998,7 +12098,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 2c25e6aa335859043b4cd55edbec2395, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -13042,7 +13142,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 2c25e6aa335859043b4cd55edbec2395, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -13378,6 +13478,7 @@ GameObject:
   - component: {fileID: 1846623591}
   - component: {fileID: 1846623590}
   - component: {fileID: 1846623589}
+  - component: {fileID: 1846623592}
   m_Layer: 5
   m_Name: PropellerAbility
   m_TagString: Untagged
@@ -13448,7 +13549,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1846623590}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1846623592}
+        m_TargetAssemblyTypeName: PropellerButtonController, Assembly-CSharp
+        m_MethodName: OnButtonDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1846623592}
+        m_TargetAssemblyTypeName: PropellerButtonController, Assembly-CSharp
+        m_MethodName: OnButtonUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1846623590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13487,6 +13612,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1846623587}
   m_CullTransparentMesh: 1
+--- !u!114 &1846623592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846623587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16f70f8165e3ac4b8f744ca80102617, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PropellerButtonController
+  vehicle: {fileID: 670835297}
+  assembly: {fileID: 1250006785}
+  button: {fileID: 1846623589}
 --- !u!1001 &1853437424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13781,7 +13921,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 2c25e6aa335859043b4cd55edbec2395, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -14195,7 +14335,7 @@ CircleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 2c25e6aa335859043b4cd55edbec2395, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -14277,7 +14417,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 2c25e6aa335859043b4cd55edbec2395, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
