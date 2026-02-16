@@ -14,6 +14,7 @@ public class GameStartController : MonoBehaviour
     [SerializeField] private VehicleMotor2D motor;
     [SerializeField] private WingsButtonController wingsButton;
     [SerializeField] private PropellerButtonController propellerButton;
+    [SerializeField] private RocketButtonController rocketButton;
 
 
     public void SetMotor(VehicleMotor2D m) => motor = m;
@@ -48,6 +49,8 @@ public class GameStartController : MonoBehaviour
 
         if (propellerButton != null)
             propellerButton.Refresh();
+
+        if (rocketButton != null) rocketButton.Refresh();
     }
 
     public void ResetToAssembly()
@@ -73,6 +76,8 @@ public class GameStartController : MonoBehaviour
 
         if (propellerButton != null)
             propellerButton.Refresh();
+
+        if (rocketButton != null) rocketButton.Refresh();
 
         var rb = motor != null ? motor.GetComponent<Rigidbody2D>() : null;
         if (rb != null)

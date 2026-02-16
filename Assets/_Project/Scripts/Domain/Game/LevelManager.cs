@@ -51,6 +51,7 @@ public class LevelManager : MonoBehaviour
         if (lvl == null) return;
 
         EnableLevelDesign(lvl.levelDesignIndex);
+        ResetObstaclesForActiveDesign(lvl.levelDesignIndex);
         ResetFinishForActiveDesign(lvl.levelDesignIndex);
 
         var motor = FindFirstObjectByType<VehicleMotor2D>();
@@ -110,33 +111,6 @@ public class LevelManager : MonoBehaviour
             levelDesignRoot.GetChild(i).gameObject.SetActive(i == childIndex);
     }
 
-    private void SpawnVehicle(GameObject vehiclePrefab)
-    {
-        if (vehiclePrefab == null || vehicleSpawnPoint == null) return;
-
-        if (currentVehicle != null)
-            Destroy(currentVehicle);
-
-        currentVehicle = Instantiate(vehiclePrefab, vehicleSpawnPoint.position, vehicleSpawnPoint.rotation);
-        currentVehicle.tag = "Player";
-
-        var rb = currentVehicle.GetComponent<Rigidbody2D>();
-        if (rb != null)
-        {
-            rb.linearVelocity = Vector2.zero;
-            rb.angularVelocity = 0f;
-            rb.simulated = true;
-        }
-
-        var motor = currentVehicle.GetComponent<VehicleMotor2D>();
-        if (motor != null)
-        {
-            if (assemblyController != null) assemblyController.SetVehicle(motor);
-            if (endController != null) endController.SetVehicle(motor);
-        }
-    }
-
-
     public void OnWin()
     {
         OnWin(1);
@@ -185,5 +159,16 @@ public class LevelManager : MonoBehaviour
         var active = levelDesignRoot.GetChild(childIndex);
         var finish = active.GetComponentInChildren<FinishTrigger>(true);
         if (finish != null) finish.ResetTrigger();
+    }
+
+    private void ResetObstaclesForActiveDesign(int childIndex)
+    {
+        if (levelDesignRoot == null) return;
+        if (childIndex < 0 || childIndex >= levelDesignRoot.childCount) return;
+
+        var root = levelDesignRoot.GetChild(childIndex);
+        var obstacles = root.GetComponentsInChildren<DestructibleObstacle>(true);
+        foreach (var o in obstacles)
+            o.ResetObstacle();
     }
 }

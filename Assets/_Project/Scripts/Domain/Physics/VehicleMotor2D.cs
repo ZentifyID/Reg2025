@@ -23,6 +23,10 @@ public class VehicleMotor2D : MonoBehaviour
     public bool IsPropellerHeld => propellerHeld;
 
     public bool HasRocket => hasRocket;
+    private RocketPod2D rocketPod;
+    public RocketPod2D RocketPod => rocketPod;
+
+    public void SetRocketPod(RocketPod2D pod) => rocketPod = pod;
 
     private Rigidbody2D rb;
     private float nextWingsTime;

@@ -16,6 +16,12 @@ public class AttachmentSlot : MonoBehaviour
         if (prefab == null) return;
 
         placedInstance = Instantiate(prefab, transform);
+        var pod = placedInstance.GetComponentInChildren<RocketPod2D>(true);
+        if (pod != null)
+        {
+            var motor = GetComponentInParent<VehicleMotor2D>();
+            if (motor != null) motor.SetRocketPod(pod);
+        }
         placedInstance.transform.localPosition = Vector3.zero;
         placedInstance.transform.localRotation = Quaternion.identity;
         placedInstance.transform.localScale = Vector3.one;

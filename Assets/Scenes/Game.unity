@@ -4354,6 +4354,7 @@ MonoBehaviour:
   firePoint: {fileID: 1199538254}
   rocketPrefab: {fileID: 4670632150839282206, guid: 6aa795fd7144d8b4181fac3758cc2db0, type: 3}
   cooldown: 2
+  nextFireTime: 0
 --- !u!4 &673323345 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2615678907916751126, guid: 38ca74d810ada694da053d7aa1eaf0dc, type: 3}
@@ -7356,6 +7357,7 @@ MonoBehaviour:
   motor: {fileID: 670835297}
   wingsButton: {fileID: 877105870}
   propellerButton: {fileID: 1846623592}
+  rocketButton: {fileID: 1371263182}
 --- !u!4 &1021046467
 Transform:
   m_ObjectHideFlags: 0
@@ -8533,6 +8535,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cups
       objectReference: {fileID: 0}
+    - target: {fileID: 589047285854655884, guid: 571755b29d36a9f40ac585f4dd53cb75, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1659698817881781751, guid: 571755b29d36a9f40ac585f4dd53cb75, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1659698818075038636, guid: 571755b29d36a9f40ac585f4dd53cb75, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1659698818770974510, guid: 571755b29d36a9f40ac585f4dd53cb75, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1659698819287218737, guid: 571755b29d36a9f40ac585f4dd53cb75, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1659698819499422252, guid: 571755b29d36a9f40ac585f4dd53cb75, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1659698819521925916, guid: 571755b29d36a9f40ac585f4dd53cb75, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2151379296079118973, guid: 571755b29d36a9f40ac585f4dd53cb75, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10
@@ -9057,6 +9087,10 @@ MonoBehaviour:
   - {fileID: 812190804}
   - {fileID: 1576169283}
   - {fileID: 7755404}
+  - {fileID: 1199538256}
+  - {fileID: 510704327}
+  - {fileID: 1625096149}
+  - {fileID: 964054699}
   wheelsPrefab: {fileID: 2615678907916751125, guid: 4a2269a142c217f449702d7b78575657, type: 3}
   wingsPrefab: {fileID: 3079876389149384302, guid: 4ce6b59c67af3794fb819368bd826a2f, type: 3}
   propellerPrefab: {fileID: 945109728858299745, guid: 3b5526d48c420e34db3023a253c11118, type: 3}
@@ -10022,6 +10056,7 @@ GameObject:
   - component: {fileID: 1371263181}
   - component: {fileID: 1371263180}
   - component: {fileID: 1371263179}
+  - component: {fileID: 1371263182}
   m_Layer: 5
   m_Name: RocketAbility
   m_TagString: Untagged
@@ -10092,7 +10127,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1371263180}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1371263182}
+        m_TargetAssemblyTypeName: RocketButtonController, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1371263180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10131,6 +10178,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1371263177}
   m_CullTransparentMesh: 1
+--- !u!114 &1371263182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371263177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e376d2d8c49bc3c47b3dade2d9e6a2fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RocketButtonController
+  assembly: {fileID: 1250006785}
+  vehicle: {fileID: 670835297}
+  button: {fileID: 1371263179}
 --- !u!1 &1374435427
 GameObject:
   m_ObjectHideFlags: 0
