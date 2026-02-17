@@ -6,6 +6,7 @@ public class UserData
 {
     public int lastUnlockedLevel = 0;
     public int coins;
+    public int lastPlayedLevel = 0;
 
     // UNIX time seconds когда можно снова получить награду
     public long nextFreeCoinsTime;

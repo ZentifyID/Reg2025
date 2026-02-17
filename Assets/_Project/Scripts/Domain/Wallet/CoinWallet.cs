@@ -11,6 +11,8 @@ public class CoinWallet : MonoBehaviour
 
     private UserDataStorage storage;
 
+    public int Coins { get; private set; }
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -26,17 +28,20 @@ public class CoinWallet : MonoBehaviour
         var loaded = storage.LoadOrCreate();
         Data = loaded ?? new UserData { coins = 0 };
 
-        CoinsChanged?.Invoke(Data.coins);
+        Coins = Data.coins;
+        CoinsChanged?.Invoke(Coins);
     }
 
     public void Add(int amount)
     {
         if (storage == null) storage = new UserDataStorage();
-        Data ??= new UserData { coins = 0 };
+        Data ??= new UserData();
 
         Data.coins += Mathf.Max(0, amount);
+        Coins = Data.coins;
+
         storage.Save(Data);
-        CoinsChanged?.Invoke(Data.coins);
+        CoinsChanged?.Invoke(Coins);
     }
 
     public bool TrySpend(int amount)
@@ -44,13 +49,35 @@ public class CoinWallet : MonoBehaviour
         if (amount <= 0) return true;
 
         if (storage == null) storage = new UserDataStorage();
-        Data ??= new UserData { coins = 0 };
+        Data ??= new UserData();
 
         if (Data.coins < amount) return false;
 
         Data.coins -= amount;
+        Coins = Data.coins;
+
         storage.Save(Data);
-        CoinsChanged?.Invoke(Data.coins);
+        CoinsChanged?.Invoke(Coins);
         return true;
+    }
+
+    public void SaveProgress(int currentLevel)
+    {
+        if (storage == null) storage = new UserDataStorage();
+        Data ??= new UserData();
+
+        Data.lastPlayedLevel = currentLevel;
+        storage.Save(Data);
+    }
+
+    public int GetSavedLevel(int maxLevelCount)
+    {
+        Data ??= new UserData();
+        return Mathf.Clamp(Data.lastPlayedLevel, 0, Mathf.Max(0, maxLevelCount - 1));
+    }
+
+    public void SaveAll()
+    {
+        storage.Save(Data);
     }
 }

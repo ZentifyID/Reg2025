@@ -19,22 +19,16 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private CoinWallet wallet;
     [SerializeField] private SlotAnchorBinder slotAnchorBinder;
 
-    private UserDataStorage storage;
-    private UserData data;
-
-    private GameObject currentVehicle;
-
     public int CurrentLevelIndex { get; private set; } = 0;
 
     private void Awake()
     {
-        Debug.Log($"[LevelManager] Awake on {gameObject.name}", this);
-        storage = new UserDataStorage();
-        data = storage.LoadOrCreate() ?? new UserData { coins = 0 };
+        if (wallet == null)
+            wallet = CoinWallet.Instance != null ? CoinWallet.Instance : FindFirstObjectByType<CoinWallet>();
 
-        if (wallet == null) wallet = CoinWallet.Instance != null ? CoinWallet.Instance : FindFirstObjectByType<CoinWallet>();
-
-        CurrentLevelIndex = Mathf.Clamp(data.lastUnlockedLevel, 0, Mathf.Max(0, levelDatas.Count - 1));
+        CurrentLevelIndex = wallet != null
+            ? wallet.GetSavedLevel(levelDatas.Count)
+            : 0;
     }
 
     private void Start()
@@ -68,7 +62,6 @@ public class LevelManager : MonoBehaviour
             {
                 rb.linearVelocity = Vector2.zero;
                 rb.angularVelocity = 0f;
-                // rb.simulated = false; // если хочешь стоять до StartRun
             }
 
             if (assemblyController != null) assemblyController.SetVehicle(motor);
@@ -81,10 +74,10 @@ public class LevelManager : MonoBehaviour
 
         var roverVisual = FindFirstObjectByType<RoverVisual>();
         if (roverVisual != null)
+        {
             roverVisual.SetModel(lvl.vehiclePrefab);
-
-        roverVisual.SetModel(lvl.vehiclePrefab);
-        slotAnchorBinder.Rebind();
+            if (slotAnchorBinder != null) slotAnchorBinder.Rebind();
+        }
 
         if (assemblyController != null)
             assemblyController.SetupForLevel(lvl);
@@ -92,7 +85,7 @@ public class LevelManager : MonoBehaviour
         var startUI = FindFirstObjectByType<GameStartController>();
         if (startUI != null)
         {
-            if (motor != null) startUI.SetMotor(motor); // добавь метод
+            if (motor != null) startUI.SetMotor(motor);
             startUI.ResetToAssembly();
         }
 
@@ -101,6 +94,9 @@ public class LevelManager : MonoBehaviour
 
         if (levelText != null)
             levelText.text = $"{CurrentLevelIndex + 1}";
+
+        if (wallet != null)
+            wallet.SaveProgress(CurrentLevelIndex);
     }
 
     private void EnableLevelDesign(int childIndex)
@@ -125,11 +121,14 @@ public class LevelManager : MonoBehaviour
             wallet.Add(lvl.rewardCoins * multiplier);
         }
 
-        int next = CurrentLevelIndex + 1;
-        if (next >= levelDatas.Count) next = 0;
+        if (wallet != null && wallet.Data != null)
+        {
+            int next = CurrentLevelIndex + 1;
+            if (next >= levelDatas.Count) next = 0;
 
-        data.lastUnlockedLevel = Mathf.Max(data.lastUnlockedLevel, next);
-        storage.Save(data);
+            wallet.Data.lastUnlockedLevel = Mathf.Max(wallet.Data.lastUnlockedLevel, next);
+            wallet.SaveAll();
+        }
     }
 
     public void CompleteLevelAndStartNext(int rewardMultiplier = 1)
@@ -147,8 +146,7 @@ public class LevelManager : MonoBehaviour
 
     public void OnLose()
     {
-        data.lastUnlockedLevel = 0;
-        storage.Save(data);
+        // data.lastUnlockedLevel = 0;
     }
 
     private void ResetFinishForActiveDesign(int childIndex)

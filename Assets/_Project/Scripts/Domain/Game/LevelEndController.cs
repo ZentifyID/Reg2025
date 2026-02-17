@@ -88,7 +88,7 @@ public class LevelEndController : MonoBehaviour
     public void OnLoseRetry()
     {
         if (loseUI != null) loseUI.SetActive(false);
-        levelManager.ApplyLevel(levelManager.CurrentLevelIndex);
+        levelManager.ApplyLevel(0);
     }
 
     public void OnLoseWatchAd()
@@ -103,8 +103,8 @@ public class LevelEndController : MonoBehaviour
 
         rewardAdWindow.Open(
             levelManager,
-            onCompleted: _ => levelManager.NextLevelButton(),
-            onCanceled: () => { if (loseUI != null) loseUI.SetActive(true); }
+            onCompleted: _ => levelManager.ApplyLevel(levelManager.CurrentLevelIndex),
+            onCanceled: () => { levelManager.ApplyLevel(0); }
         );
     }
 }
