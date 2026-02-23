@@ -17,6 +17,11 @@ public class VehicleMotor2D : MonoBehaviour
     [Header("Rocket")]
     [SerializeField] private bool hasRocket;
 
+    [Header("Spiked Wheels")]
+    [SerializeField] private float spikesAdhesionForce = 35f;
+    [SerializeField] private float spikesRayLength = 0.6f;
+    [SerializeField] private LayerMask spikesGroundMask = ~0;
+
     private bool hasPropeller;
     private bool propellerHeld;
     public bool HasPropeller => hasPropeller;
@@ -25,12 +30,14 @@ public class VehicleMotor2D : MonoBehaviour
     public bool HasRocket => hasRocket;
     private RocketPod2D rocketPod;
     public RocketPod2D RocketPod => rocketPod;
-
     public void SetRocketPod(RocketPod2D pod) => rocketPod = pod;
 
     private Rigidbody2D rb;
     private float nextWingsTime;
     public bool HasWings { get; private set; }
+
+    public bool SpikesActive { get; private set; }
+    public bool HasSpikedWheels { get; private set; }  
 
     private void Awake()
     {
@@ -47,6 +54,21 @@ public class VehicleMotor2D : MonoBehaviour
         if (propellerHeld)
         {
             rb.AddForce(transform.right * propellerForce, ForceMode2D.Force);
+        }
+
+        if (SpikesActive || HasSpikedWheels)
+            Debug.Log($"[SPIKES] Active={SpikesActive} Has={HasSpikedWheels}");
+
+        if (SpikesActive && HasSpikedWheels)
+        {
+            var origin = rb.worldCenterOfMass;
+            var dir = -transform.up;
+
+            RaycastHit2D hit = Physics2D.Raycast(origin, dir, spikesRayLength, spikesGroundMask);
+            if (hit.collider != null)
+            {
+                rb.AddForce(-hit.normal * spikesAdhesionForce, ForceMode2D.Force);
+            }
         }
     }
 
@@ -85,7 +107,7 @@ public class VehicleMotor2D : MonoBehaviour
         Debug.Log($"[VehicleMotor2D] TryUseWings simulated={rb.simulated} HasWings={HasWings}");
 
         if (!HasWings) return false;
-        if (!rb.simulated) return false;          // ¬ј∆Ќќ: пока simulated=false, force не сработает
+        if (!rb.simulated) return false;
         if (Time.time < nextWingsTime) return false;
 
         nextWingsTime = Time.time + wingsCooldown;
@@ -93,6 +115,28 @@ public class VehicleMotor2D : MonoBehaviour
 
         Debug.Log("[VehicleMotor2D] Wings impulse!");
         return true;
+    }
+
+    public void SetHasSpikedWheels(bool value)
+    {
+        HasSpikedWheels = value;
+
+        // если шипов больше нет Ч способность принудительно выключаем
+        if (!HasSpikedWheels)
+            SpikesActive = false;
+    }
+
+    public void ToggleSpikes()
+    {
+        // нельз€ включить без шипов
+        if (!HasSpikedWheels) { SpikesActive = false; return; }
+        SpikesActive = !SpikesActive;
+    }
+
+    public void SetSpikesActive(bool value)
+    {
+        if (!HasSpikedWheels) { SpikesActive = false; return; }
+        SpikesActive = value;
     }
 
     public void StopMoving()

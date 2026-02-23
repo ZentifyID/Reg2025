@@ -39,6 +39,24 @@
     { "key": "game_fail", "value": "УРОВЕНЬ НЕ ПРОЙДЕН" },   
     { "key": "game_skip", "value": "ПРОПУСТИТЬ" },   
 
+    { "key": "editor_settings", "value": "Меню Сохранения/Загрузки" },
+    { "key": "editor_save_btn", "value": "Сохранить" },      
+    { "key": "editor_load_btn", "value": "Загрузить" },
+    { "key": "editor_add_btn", "value": "Добавить" },
+    { "key": "editor_remove_btn", "value": "Удалить" },
+    { "key": "editor_carsettings_btn", "value": "Настройки\nАвто" },
+    { "key": "editor_carsettings", "value": "Настройки Авто" },
+    { "key": "editor_carmodels", "value": "Модели Авто" },
+    { "key": "editor_milkcartoon", "value": "Коробка молока" },
+    { "key": "editor_can", "value": "Жестяная Банка" },
+    { "key": "editor_banana", "value": "Банан" },
+    { "key": "editor_upgrades", "value": "Улучшения" },     
+    { "key": "editor_spikedwheels", "value": "Шипованные колеса" },            
+    { "key": "editor_rocket", "value": "Ракета" },
+    { "key": "editor_propeller", "value": "Пропеллер" },            
+    { "key": "editor_wings", "value": "Крылья" },            
+
+
     { "key": "lang_ru", "value": "Русский" },
     { "key": "lang_en", "value": "Английский" }
   ]

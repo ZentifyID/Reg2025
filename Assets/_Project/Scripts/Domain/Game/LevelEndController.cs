@@ -18,6 +18,10 @@ public class LevelEndController : MonoBehaviour
     [SerializeField] private LevelManager levelManager;
     [SerializeField] private LevelRewardAdWindow rewardAdWindow;
 
+    [Header("End Audio")]
+    [SerializeField] private AudioSource winSource;
+    [SerializeField] private AudioSource loseSource;
+
     public void Win()
     {
         if (CurrentState != State.Playing) return;
@@ -29,6 +33,8 @@ public class LevelEndController : MonoBehaviour
         if (loseUI != null) loseUI.SetActive(false);
 
         if (finishUI != null) finishUI.SetActive(true);
+
+        if (winSource != null) winSource.Play();
     }
 
     public void Lose()
@@ -41,6 +47,8 @@ public class LevelEndController : MonoBehaviour
         if (gameplayUI != null) gameplayUI.SetActive(false);
         if (finishUI != null) finishUI.SetActive(false);
         if (loseUI != null) loseUI.SetActive(true);
+
+        if (loseSource != null) loseSource.Play();
     }
 
     public void ResetToPlaying()

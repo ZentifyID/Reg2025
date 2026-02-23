@@ -6,9 +6,16 @@ public class AttachmentSlot : MonoBehaviour
     public bool IsOccupied { get; private set; }
 
     [Header("Visual")]
-    [SerializeField] private GameObject highlight; // твой Highlight объект
+    [SerializeField] private GameObject highlight; 
 
     private GameObject placedInstance;
+
+    public enum WheelKind { Any, Front, Rear }
+
+    public WheelKind wheelKind = WheelKind.Any;
+
+    [SerializeField] private string anchorId;
+    public string AnchorId => anchorId;
 
     public void Place(GameObject prefab)
     {

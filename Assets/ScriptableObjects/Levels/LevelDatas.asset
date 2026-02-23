@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4da35c1615cf30940b59516ee0c2f0ed, type: 3}
+  m_Name: LevelDatas
+  m_EditorClassIdentifier: Assembly-CSharp::LevelDatas
+  levels:
+  - rewardCoins: 25
+    vehiclePrefab: {fileID: 286638946415238250, guid: 034dcec99328b7a4e85385ada562a14a, type: 3}
+    requiredItems: 030000000000000002000000
+    placedObjects:
+    - prefabPath: Prefabs/FlatGround
+      position: {x: 8.651998, y: 9.389772, z: 9}
+      rotationZ: 0
+    - prefabPath: Prefabs/CurvedGround
+      position: {x: 13.568542, y: 9.389772, z: 9}
+      rotationZ: 0
+    - prefabPath: Prefabs/BedDrawer
+      position: {x: 34.775063, y: 13.254701, z: 9}
+      rotationZ: 0
+    - prefabPath: Prefabs/Cups
+      position: {x: 36.40805, y: 14.22778, z: 9}
+      rotationZ: 0
+    - prefabPath: Prefabs/FlatGround
+      position: {x: 38.2209, y: 14.191476, z: 9}
+      rotationZ: 0
+    - prefabPath: Prefabs/CurvedGround
+      position: {x: 43.176315, y: 14.195415, z: 9}
+      rotationZ: 0
+    - prefabPath: Prefabs/FlatGround
+      position: {x: 57.673637, y: 22.723413, z: 9}
+      rotationZ: 0
+    - prefabPath: Prefabs/Finish Tape
+      position: {x: 58.673637, y: 22.733414, z: 9}
+      rotationZ: 0
+  - rewardCoins: 25
+    vehiclePrefab: {fileID: 286638946415238250, guid: 4db707369bc3ecf448703e68852f671d, type: 3}
+    requiredItems: 0100000000000000
+    placedObjects:
+    - prefabPath: Prefabs/FlatGround
+      position: {x: 8.687178, y: 9.389524, z: 9}
+      rotationZ: 0
+    - prefabPath: Prefabs/FlatGround
+      position: {x: 18.941727, y: 9.623649, z: 9}
+      rotationZ: 0
+    - prefabPath: Prefabs/BedDrawer
+      position: {x: 33.629635, y: 8.854036, z: 9}
+      rotationZ: 0
+    - prefabPath: Prefabs/FlatGround
+      position: {x: 37.06346, y: 9.80696, z: 9}
+      rotationZ: 0
+    - prefabPath: Prefabs/FlatGround
+      position: {x: 42.066963, y: 9.80696, z: 9}
+      rotationZ: 0
+    - prefabPath: Prefabs/FlatGround
+      position: {x: 51.15091, y: 11.609725, z: 9}
+      rotationZ: 0
+    - prefabPath: Prefabs/FlatGround
+      position: {x: 56.07182, y: 11.609247, z: 9}
+      rotationZ: 0
+    - prefabPath: Prefabs/Finish Tape
+      position: {x: 57.07182, y: 11.619247, z: 9}
+      rotationZ: 0
+  - rewardCoins: 25
+    vehiclePrefab: {fileID: 286638946415238250, guid: a822982d14a49bc42a0f7c4395804e99, type: 3}
+    requiredItems: 0100000004000000
+    placedObjects:
+    - prefabPath: Prefabs/FlatGround
+      position: {x: 8.608302, y: 9.373024, z: 9}
+      rotationZ: 0
+    - prefabPath: Prefabs/FlatGround
+      position: {x: 13.567863, y: 9.366088, z: 9}
+      rotationZ: 0
+    - prefabPath: Prefabs/CurvedGround
+      position: {x: 18.51349, y: 9.36457, z: 9}
+      rotationZ: 0
+    - prefabPath: Prefabs/FlatGround
+      position: {x: 29.574776, y: 11.524949, z: 9}
+      rotationZ: 0
+    - prefabPath: Prefabs/FlatGround
+      position: {x: 40.312263, y: 13.036897, z: 9}
+      rotationZ: 0
+    - prefabPath: Prefabs/FlatGround
+      position: {x: 51.813225, y: 14.257698, z: 9}
+      rotationZ: 0
+    - prefabPath: Prefabs/Finish Tape
+      position: {x: 52.813225, y: 14.267698, z: 9}
+      rotationZ: 0

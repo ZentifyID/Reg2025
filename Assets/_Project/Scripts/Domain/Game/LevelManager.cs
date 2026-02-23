@@ -1,7 +1,5 @@
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -9,7 +7,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private LevelDatas levelDatas;
 
     [Header("Scene refs")]
-    [SerializeField] private Transform levelDesignRoot;
+    [SerializeField] private Transform levelRoot;
     [SerializeField] private Transform vehicleSpawnPoint;
     [SerializeField] private TMP_Text levelText;
 
@@ -44,9 +42,7 @@ public class LevelManager : MonoBehaviour
         var lvl = levelDatas.GetByIndex(CurrentLevelIndex);
         if (lvl == null) return;
 
-        EnableLevelDesign(lvl.levelDesignIndex);
-        ResetObstaclesForActiveDesign(lvl.levelDesignIndex);
-        ResetFinishForActiveDesign(lvl.levelDesignIndex);
+        BuildLevelFromData(lvl);
 
         var motor = FindFirstObjectByType<VehicleMotor2D>();
         if (motor != null)
@@ -99,18 +95,69 @@ public class LevelManager : MonoBehaviour
             wallet.SaveProgress(CurrentLevelIndex);
     }
 
-    private void EnableLevelDesign(int childIndex)
+    private void BuildLevelFromData(LevelData lvl)
     {
-        if (levelDesignRoot == null) return;
+        if (levelRoot == null)
+        {
+            Debug.LogError("[LevelManager] levelRoot is NULL");
+            return;
+        }
 
-        for (int i = 0; i < levelDesignRoot.childCount; i++)
-            levelDesignRoot.GetChild(i).gameObject.SetActive(i == childIndex);
+        // очистить старый уровень
+        for (int i = levelRoot.childCount - 1; i >= 0; i--)
+            Destroy(levelRoot.GetChild(i).gameObject);
+
+        // заспавнить объекты
+        if (lvl.placedObjects != null)
+        {
+            foreach (var p in lvl.placedObjects)
+            {
+                if (string.IsNullOrWhiteSpace(p.prefabPath))
+                {
+                    Debug.LogWarning("[LevelManager] PlacedObjectData.prefabPath is NULL/empty");
+                    continue;
+                }
+
+                var prefab = Resources.Load<GameObject>(p.prefabPath);
+                if (prefab == null)
+                {
+                    Debug.LogWarning($"[LevelManager] Prefab not found in Resources: {p.prefabPath}");
+                    continue;
+                }
+
+                var go = Instantiate(
+                    prefab,
+                    p.position,
+                    Quaternion.Euler(0, 0, p.rotationZ),
+                    levelRoot
+                );
+
+                var tag = go.GetComponent<PlacedObjectTag>();
+                if (tag == null) tag = go.AddComponent<PlacedObjectTag>();
+                tag.prefabPath = p.prefabPath;
+            }
+        }
+
+        ResetFinishInLevelRoot();
+        ResetObstaclesInLevelRoot();
     }
 
-    public void OnWin()
+    private void ResetFinishInLevelRoot()
     {
-        OnWin(1);
+        if (levelRoot == null) return;
+        var finish = levelRoot.GetComponentInChildren<FinishTrigger>(true);
+        if (finish != null) finish.ResetTrigger();
     }
+
+    private void ResetObstaclesInLevelRoot()
+    {
+        if (levelRoot == null) return;
+        var obstacles = levelRoot.GetComponentsInChildren<DestructibleObstacle>(true);
+        foreach (var o in obstacles)
+            o.ResetObstacle();
+    }
+
+    public void OnWin() => OnWin(1);
 
     public void OnWin(int rewardMultiplier = 1)
     {
@@ -144,29 +191,5 @@ public class LevelManager : MonoBehaviour
         ApplyLevel(next);
     }
 
-    public void OnLose()
-    {
-        // data.lastUnlockedLevel = 0;
-    }
-
-    private void ResetFinishForActiveDesign(int childIndex)
-    {
-        if (levelDesignRoot == null) return;
-        if (childIndex < 0 || childIndex >= levelDesignRoot.childCount) return;
-
-        var active = levelDesignRoot.GetChild(childIndex);
-        var finish = active.GetComponentInChildren<FinishTrigger>(true);
-        if (finish != null) finish.ResetTrigger();
-    }
-
-    private void ResetObstaclesForActiveDesign(int childIndex)
-    {
-        if (levelDesignRoot == null) return;
-        if (childIndex < 0 || childIndex >= levelDesignRoot.childCount) return;
-
-        var root = levelDesignRoot.GetChild(childIndex);
-        var obstacles = root.GetComponentsInChildren<DestructibleObstacle>(true);
-        foreach (var o in obstacles)
-            o.ResetObstacle();
-    }
+    public void OnLose() { }
 }

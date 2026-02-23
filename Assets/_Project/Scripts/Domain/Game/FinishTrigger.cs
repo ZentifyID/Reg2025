@@ -7,6 +7,28 @@ public class FinishTrigger : MonoBehaviour
 
     private bool triggered;
 
+    private void Awake()
+    {
+        AutoFindController();
+    }
+
+    private void OnEnable()
+    {
+        // на случай если объект был заспавнен/включен позже
+        AutoFindController();
+    }
+
+    private void AutoFindController()
+    {
+        if (endController != null) return;
+
+        // найти в сцене
+        endController = FindFirstObjectByType<LevelEndController>();
+
+        if (endController == null)
+            Debug.LogWarning("[FinishTrigger] LevelEndController not found in scene.");
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (triggered) return;
@@ -22,13 +44,17 @@ public class FinishTrigger : MonoBehaviour
         }
 
         triggered = true;
-        if (endController != null)
-            endController.Win();
+
+        if (endController == null)
+            AutoFindController();
+
+        endController?.Win();
     }
 
     public void ResetTrigger()
     {
         triggered = false;
+
         var col = GetComponent<Collider2D>();
         if (col != null) col.enabled = true;
     }

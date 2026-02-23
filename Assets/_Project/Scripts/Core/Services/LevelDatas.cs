@@ -6,7 +6,6 @@ using UnityEngine;
 public class LevelDatas : ScriptableObject
 {
     public List<LevelData> levels = new List<LevelData>();
-
     public int Count => levels?.Count ?? 0;
 
     public LevelData GetByIndex(int index)
@@ -21,11 +20,21 @@ public class LevelDatas : ScriptableObject
 public class LevelData
 {
     public int rewardCoins = 25;
-    public List<ItemType> requiredItems = new List<ItemType>();
 
     [Header("Vehicle")]
     public GameObject vehiclePrefab;
 
-    [Header("Which child in LevelDesignRoot to enable (0 = first child)")]
-    public int levelDesignIndex = 0;
+    [Header("Allowed items / required items")]
+    public List<ItemType> requiredItems = new List<ItemType>();
+
+    [Header("Placed objects in level")]
+    public List<PlacedObjectData> placedObjects = new List<PlacedObjectData>();
+}
+
+[Serializable]
+public class PlacedObjectData
+{
+    public string prefabPath;
+    public Vector3 position;
+    public float rotationZ;
 }

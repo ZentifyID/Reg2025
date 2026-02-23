@@ -39,6 +39,23 @@
     { "key": "game_fail", "value": "LEVEL FAILED" },   
     { "key": "game_skip", "value": "SKIP" },   
 
+    { "key": "editor_settings", "value": "Save/Load Menu" },
+    { "key": "editor_save_btn", "value": "Save" },      
+    { "key": "editor_load_btn", "value": "Load" },
+    { "key": "editor_add_btn", "value": "Add" },
+    { "key": "editor_remove_btn", "value": "Remove" },
+    { "key": "editor_carsettings_btn", "value": "Car\nSettings" },
+    { "key": "editor_carsettings", "value": "Car Settings" },
+    { "key": "editor_carmodels", "value": "Car Models" },
+    { "key": "editor_milkcartoon", "value": "Milk Cartoon" },
+    { "key": "editor_can", "value": "Can" },
+    { "key": "editor_banana", "value": "Banana" },
+    { "key": "editor_upgrades", "value": "Upgrades" },     
+    { "key": "editor_spikedwheels", "value": "Spiked Wheels" },            
+    { "key": "editor_rocket", "value": "Rocket" },
+    { "key": "editor_propeller", "value": "Propeller" },            
+    { "key": "editor_wings", "value": "Wings" },                
+
     { "key": "lang_ru", "value": "Russian" },
     { "key": "lang_en", "value": "English" }
   ]

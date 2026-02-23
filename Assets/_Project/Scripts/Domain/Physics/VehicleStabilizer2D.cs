@@ -5,10 +5,11 @@ public class VehicleStabilizer2D : MonoBehaviour
 {
     [Header("Limits")]
     [SerializeField] private float maxAngularSpeed = 200f; // deg/s
-    [SerializeField] private float maxTilt = 35f;          // градусов от "нормального" положени€
+    [SerializeField] private float maxTilt = 35f;          // градусов от 0
 
-    [Header("Stabilization force")]
-    [SerializeField] private float stabilizeTorque = 10f;  // сила выравнивани€
+    [Header("Stabilization (PD controller)")]
+    [SerializeField] private float stabilizeStrength = 20f; // "пружина" к 0
+    [SerializeField] private float stabilizeDamping = 6f;   // демпфер (гасит раскачку)
     [SerializeField] private bool onlyInAir = true;
 
     [Header("Ground check")]
@@ -25,20 +26,27 @@ public class VehicleStabilizer2D : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // 1) ограничиваем угловую скорость
+        // ќграничение угловой скорости (м€гко)
         rb.angularVelocity = Mathf.Clamp(rb.angularVelocity, -maxAngularSpeed, maxAngularSpeed);
 
-        // 2) если нужно Ч стабилизируем только в воздухе
+        // ≈сли стабилизаци€ только в воздухе и мы на земле Ч не мешаем физике
         if (onlyInAir && IsGrounded())
             return;
 
-        // 3) выравниваем к 0 град (чтобы банан не крутилс€)
         float angle = NormalizeAngle(rb.rotation);
-        float target = Mathf.Clamp(angle, -maxTilt, maxTilt);
 
-        // torque = "как сильно мы хотим вернуть к target"
-        float error = target - angle;
-        rb.AddTorque(error * stabilizeTorque, ForceMode2D.Force);
+        // ÷≈Ћ№ всегда 0∞, но если угол вышел за пределы maxTilt Ч возвращаем к границе
+        float targetAngle = 0f;
+        if (angle > maxTilt) targetAngle = maxTilt;
+        else if (angle < -maxTilt) targetAngle = -maxTilt;
+
+        float error = targetAngle - angle;           // deg
+        float angVel = rb.angularVelocity;           // deg/s
+
+        // PD: torque = P*error - D*angVel
+        float torque = (error * stabilizeStrength) - (angVel * stabilizeDamping);
+
+        rb.AddTorque(torque, ForceMode2D.Force);
     }
 
     private bool IsGrounded()

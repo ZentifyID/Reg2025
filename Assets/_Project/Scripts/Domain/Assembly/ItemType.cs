@@ -1,11 +1,8 @@
 public enum ItemType
 {
-    WheelsA,
-    WheelsB,
-
+    Wheels,
     Wings,
     Rocket,
     Propeller,
-    SpikedWheelsA,
-    SpikedWheelsB,
+    SpikedWheels
 }
